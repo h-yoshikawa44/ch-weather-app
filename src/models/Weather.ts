@@ -23,3 +23,21 @@ export type WeatherCode =
   | 'c';
 
 export type TemperatureType = 'celsius' | 'fahrenheit';
+
+export type WindDirectionCompass =
+  | 'N'
+  | 'NNE'
+  | 'NE'
+  | 'ENE'
+  | 'E'
+  | 'ESE'
+  | 'SE'
+  | 'SSE'
+  | 'S'
+  | 'SSW'
+  | 'SW'
+  | 'WSW'
+  | 'W'
+  | 'WNW'
+  | 'NW'
+  | 'NNW';
