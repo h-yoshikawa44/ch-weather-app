@@ -21,3 +21,5 @@ export type WeatherCode =
   | 'hc'
   | 'lc'
   | 'c';
+
+export type TemperatureType = 'celsius' | 'fahrenheit';
