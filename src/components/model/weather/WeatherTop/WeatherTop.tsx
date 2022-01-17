@@ -9,7 +9,8 @@ import CircleButton from '@/components/common/CircleButton';
 import { TemperatureType } from '@/models/Weather';
 import { weatherIcons, temperatureUnits } from '@/constants/weather';
 import { fonts, colors } from '@/styles/constants';
-import { dateFormat, convertCelsiusToFahrenheit } from '@/util/date';
+import { dateFormat } from '@/utils/date';
+import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
 type Props = {
   today: string;

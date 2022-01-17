@@ -5,7 +5,8 @@ import Card from '@/components/common/Card';
 import { WeatherName, WeatherCode, TemperatureType } from '@/models/Weather';
 import { weatherIcons, temperatureUnits } from '@/constants/weather';
 import { fonts, colors } from '@/styles/constants';
-import { dateFormat, convertCelsiusToFahrenheit } from '@/util/date';
+import { dateFormat } from '@/utils/date';
+import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
 type Props = {
   date: string;
