@@ -6,18 +6,35 @@ import { Place } from '@emotion-icons/material-rounded/Place';
 import { WeatherName, WeatherCode } from '@/models/Weather';
 import Button from '@/components/common/Button';
 import CircleButton from '@/components/common/CircleButton';
-import { weatherIcon } from '@/constants/weather';
+import { TemperatureType } from '@/models/Weather';
+import { weatherIcons, temperatureUnits } from '@/constants/weather';
 import { fonts, colors } from '@/styles/constants';
-import { dateFormat } from '@/util/date';
+import { dateFormat, convertCelsiusToFahrenheit } from '@/util/date';
 
 type Props = {
   today: string;
   weather: WeatherName;
   weatherCode: WeatherCode;
+  temperature: number;
   location: string;
+  mode: TemperatureType;
 };
 
-const WeatherTop: VFC<Props> = ({ today, weather, weatherCode, location }) => {
+const WeatherTop: VFC<Props> = ({
+  today,
+  weather,
+  weatherCode,
+  temperature,
+  location,
+  mode,
+}) => {
+  let roundTemp;
+  if (mode === 'celsius') {
+    roundTemp = Math.round(temperature);
+  } else if (mode === 'fahrenheit') {
+    roundTemp = convertCelsiusToFahrenheit(temperature);
+  }
+
   return (
     <div css={watherTop}>
       <header>
@@ -31,11 +48,16 @@ const WeatherTop: VFC<Props> = ({ today, weather, weatherCode, location }) => {
       <div css={[watherTopContents, watherTopContentLayout]}>
         <div css={contentsBgImgBlock}>
           <p css={contentsImgBlock}>
-            <Image src={weatherIcon[weatherCode]} alt={weather} layout="fill" />
+            <Image
+              src={weatherIcons[weatherCode]}
+              alt={weather}
+              layout="fill"
+            />
           </p>
         </div>
         <p css={contentsTemperature}>
-          <em css={contentsTemperatureEm}>15</em>℃
+          <em>{roundTemp}</em>
+          {temperatureUnits[mode]}
         </p>
         <p css={contentsWeather}>{weather}</p>
         <div css={contentsSubTextBlock}>
@@ -104,13 +126,14 @@ const contentsTemperature = css`
   font-style: normal;
   font-weight: 100;
   line-height: 56px;
-  color: ${colors.gray5};
-`;
+  color: ${colors.gray4};
 
-const contentsTemperatureEm = css`
-  font-size: 144px;
-  font-weight: 500;
-  line-height: 169px;
+  em {
+    font-size: 144px;
+    font-weight: 500;
+    line-height: 169px;
+    color: ${colors.gray5};
+  }
 `;
 
 const contentsWeather = css`

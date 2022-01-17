@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { Navigation } from '@emotion-icons/material-rounded/Navigation';
 import Card from '@/components/common/Card';
 import { WindDirectionCompass } from '@/models/Weather';
-import { windAngle } from '@/constants/weather';
+import { windAngles } from '@/constants/weather';
 import { fonts, colors } from '@/styles/constants';
 
 type Props = {
@@ -78,7 +78,7 @@ const compassBlockIconBg = css`
 const compassBlockIcon = (compass: WindDirectionCompass) => {
   return css`
     color: ${colors.gray5};
-    transform: rotate(${windAngle[compass]}deg);
+    transform: rotate(${windAngles[compass]}deg);
   `;
 };
 

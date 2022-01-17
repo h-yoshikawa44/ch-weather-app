@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import Card from '@/components/common/Card';
 import { WeatherName, WeatherCode, TemperatureType } from '@/models/Weather';
-import { weatherIcon } from '@/constants/weather';
+import { weatherIcons, temperatureUnits } from '@/constants/weather';
 import { fonts, colors } from '@/styles/constants';
 import { dateFormat, convertCelsiusToFahrenheit } from '@/util/date';
 
@@ -28,24 +28,24 @@ const WeatherDayCard: VFC<Props> = ({
 }) => {
   let min, max;
   if (mode === 'celsius') {
-    min = Math.round(minTemp) + '℃';
-    max = Math.round(maxTemp) + '℃';
+    min = Math.round(minTemp) + temperatureUnits[mode];
+    max = Math.round(maxTemp) + temperatureUnits[mode];
   } else if (mode === 'fahrenheit') {
-    min = convertCelsiusToFahrenheit(minTemp) + '℉';
-    max = convertCelsiusToFahrenheit(maxTemp) + '℉';
+    min = convertCelsiusToFahrenheit(minTemp) + temperatureUnits[mode];
+    max = convertCelsiusToFahrenheit(maxTemp) + temperatureUnits[mode];
   }
 
   return (
     <Card>
-      <h4 css={weatherDayCardDate}>
+      <h4 css={weatherDayDate}>
         <time dateTime={date}>
           {isTomorrow ? 'Tomorrow' : dateFormat(date)}
         </time>
       </h4>
-      <p css={weatherDayCardImgBlock}>
-        <Image src={weatherIcon[weatherCode]} alt={weather} layout="fill" />
+      <p css={weatherDayImgBlock}>
+        <Image src={weatherIcons[weatherCode]} alt={weather} layout="fill" />
       </p>
-      <p css={weatherDayCardTempBlock}>
+      <p css={weatherDayTempBlock}>
         <span css={tempBlockMax}>{max}</span>
         <span css={tempBlockMin}>{min}</span>
       </p>
@@ -53,24 +53,24 @@ const WeatherDayCard: VFC<Props> = ({
   );
 };
 
-const weatherDayCardDate = css`
-  margin: 0 auto;
+const weatherDayDate = css`
   font-family: ${fonts.raleway};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
   color: ${colors.gray5};
+  text-align: center;
 `;
 
-const weatherDayCardImgBlock = css`
+const weatherDayImgBlock = css`
   position: relative;
   max-width: 100%;
   height: 80px;
   margin-top: 8px;
 `;
 
-const weatherDayCardTempBlock = css`
+const weatherDayTempBlock = css`
   display: flex;
   justify-content: space-between;
   margin-top: 32px;

@@ -1,4 +1,4 @@
-const weatherIcon = {
+const weatherIcons = {
   sn: '/weather/Snow.png',
   sl: '/weather/Sleet.png',
   h: '/weather/Hail.png',
@@ -11,7 +11,12 @@ const weatherIcon = {
   c: '/weather/Clear.png',
 };
 
-const windAngle = {
+const temperatureUnits = {
+  celsius: '℃',
+  fahrenheit: '℉',
+};
+
+const windAngles = {
   N: 0,
   NNE: 22.5,
   NE: 45,
@@ -30,4 +35,4 @@ const windAngle = {
   NNW: 337.5,
 };
 
-export { weatherIcon, windAngle };
+export { weatherIcons, temperatureUnits, windAngles };
