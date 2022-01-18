@@ -35,4 +35,4 @@ const isLocations = (args: unknown): args is Locations => {
   return ls.every((l) => isLocation(l));
 };
 
-export { isLocation, isLocations };
+export { locationTypes, isLocation, isLocations };
