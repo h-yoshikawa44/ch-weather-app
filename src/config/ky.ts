@@ -1,6 +1,15 @@
 import { Options } from 'ky-universal';
 
-export const DEFAULT_API_OPTIONS: Options = {
-  prefixUrl: 'https://www.metaweather.com/api',
-  retry: 0,
+export type ApiType = 'inner' | 'outer';
+
+const prefixUrls = {
+  inner: 'api',
+  outer: 'https://www.metaweather.com/api',
+};
+
+export const getDefaultApiOptions = (apiType: ApiType) => {
+  return {
+    prefixUrl: prefixUrls[apiType],
+    retry: 0,
+  } as Options;
 };

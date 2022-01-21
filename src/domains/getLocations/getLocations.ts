@@ -1,5 +1,5 @@
 import ky, { Options } from 'ky-universal';
-import { DEFAULT_API_OPTIONS } from '@/config/ky';
+import { ApiType, getDefaultApiOptions } from '@/config/ky';
 import { isLocations } from '@/models/Location';
 
 export type QueryParams = {
@@ -29,10 +29,11 @@ const isQueryParams = (params: unknown): params is QueryParams => {
 };
 
 const getLocations = async (
+  apiType: ApiType,
   options?: Options & { searchParams?: QueryParams }
 ) => {
   const mergedOptions = {
-    ...DEFAULT_API_OPTIONS,
+    ...getDefaultApiOptions(apiType),
     ...options,
   };
   const response = await ky.get('location/search', mergedOptions);

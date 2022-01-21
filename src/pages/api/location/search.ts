@@ -25,7 +25,7 @@ export default async function handler(
         res.status(403).end();
       }
 
-      const response = await getLocations({
+      const response = await getLocations('outer', {
         searchParams: queryParams as QueryParams,
       });
       res.status(200).json(response);
