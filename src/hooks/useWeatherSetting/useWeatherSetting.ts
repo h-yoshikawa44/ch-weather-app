@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Location } from '@/models/Location';
+import { TemperatureType } from '@/models/Weather';
 import getLocations, { QueryParams } from '@/domains/getLocations';
 
 type CurrentLocation = {
@@ -7,8 +8,10 @@ type CurrentLocation = {
   woeId: number;
 };
 
-const useCurrentLocation = () => {
+const useWeatherSetting = () => {
   const [currentLocation, setCurrentLocation] = useState<CurrentLocation>();
+  const [temperatureMode, setTemperatureMode] =
+    useState<TemperatureType>('celsius');
 
   useEffect(() => {
     const onSuccess = async (position: GeolocationPosition) => {
@@ -45,7 +48,16 @@ const useCurrentLocation = () => {
     setCurrentLocation({ name: location.title, woeId: location.woeid });
   }, []);
 
-  return { currentLocation, handleSelectLocation };
+  const handleSwitchTemperatureMode = useCallback((mode: TemperatureType) => {
+    setTemperatureMode(mode);
+  }, []);
+
+  return {
+    currentLocation,
+    temperatureMode,
+    handleSelectLocation,
+    handleSwitchTemperatureMode,
+  };
 };
 
-export default useCurrentLocation;
+export default useWeatherSetting;
