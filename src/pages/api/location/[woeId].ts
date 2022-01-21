@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from 'next';
+import { HTTPError } from 'ky-universal';
 import getWeather, { PathParams } from '@/domains/getWeather';
 
 /**
@@ -17,11 +18,17 @@ export default async function handler(
     case 'GET':
       const pathParams = req.query as unknown;
 
-      const response = await getWeather(
-        'outer',
-        (pathParams as PathParams).woeId
-      );
-      res.status(200).json(response);
+      getWeather('outer', (pathParams as PathParams).woeId)
+        .then((data) => {
+          res.status(200).json(data);
+        })
+        .catch((err) => {
+          if (err instanceof HTTPError) {
+            res.status(err.response.status).send(err.response.statusText);
+          } else if (err instanceof Error) {
+            res.status(409).send(err.message);
+          }
+        });
       break;
     default:
       res.status(405).end();

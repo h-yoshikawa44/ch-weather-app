@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from 'next';
+import { HTTPError } from 'ky-universal';
 import getLocations, {
   QueryParams,
   isQueryParams,
@@ -25,10 +26,19 @@ export default async function handler(
         res.status(403).end();
       }
 
-      const response = await getLocations('outer', {
+      getLocations('outer', {
         searchParams: queryParams as QueryParams,
-      });
-      res.status(200).json(response);
+      })
+        .then((data) => {
+          res.status(200).json(data);
+        })
+        .catch((err) => {
+          if (err instanceof HTTPError) {
+            res.status(err.response.status).send(err.response.statusText);
+          } else if (err instanceof Error) {
+            res.status(409).send(err.message);
+          }
+        });
       break;
     default:
       res.status(405).end();
