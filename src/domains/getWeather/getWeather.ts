@@ -1,14 +1,18 @@
 import ky, { Options } from 'ky-universal';
-import { DEFAULT_API_OPTIONS } from '@/config/ky';
+import { ApiType, getDefaultApiOptions } from '@/config/ky';
 import { isWeather } from '@/models/Weather';
 
 export type PathParams = {
   woeId: number;
 };
 
-const getWeather = async (woeId: number, options?: Options) => {
+const getWeather = async (
+  apiType: ApiType,
+  woeId: number,
+  options?: Options
+) => {
   const mergedOptions = {
-    ...DEFAULT_API_OPTIONS,
+    ...getDefaultApiOptions(apiType),
     ...options,
   };
   const response = await ky.get(`location/${woeId}`, mergedOptions);

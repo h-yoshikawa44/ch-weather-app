@@ -17,7 +17,10 @@ export default async function handler(
     case 'GET':
       const pathParams = req.query as unknown;
 
-      const response = await getWeather((pathParams as PathParams).woeId);
+      const response = await getWeather(
+        'outer',
+        (pathParams as PathParams).woeId
+      );
       res.status(200).json(response);
       break;
     default:
