@@ -26,7 +26,7 @@ export default async function handler(
           if (err instanceof HTTPError) {
             res.status(err.response.status).send(err.response.statusText);
           } else if (err instanceof Error) {
-            res.status(409).send(err.message);
+            res.status(500).send(err.message);
           }
         });
       break;

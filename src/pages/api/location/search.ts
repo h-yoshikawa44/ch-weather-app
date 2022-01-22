@@ -23,7 +23,7 @@ export default async function handler(
       // 不正なクエリパラメータの時は403を返す
       const queryParams = req.query as unknown;
       if (!isQueryParams(queryParams)) {
-        res.status(403).end();
+        res.status(403).send('Invalid query parameter.');
       }
 
       getLocations('outer', {
@@ -36,7 +36,7 @@ export default async function handler(
           if (err instanceof HTTPError) {
             res.status(err.response.status).send(err.response.statusText);
           } else if (err instanceof Error) {
-            res.status(409).send(err.message);
+            res.status(500).send(err.message);
           }
         });
       break;
