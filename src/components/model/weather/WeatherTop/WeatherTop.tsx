@@ -3,37 +3,41 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
 import { Place } from '@emotion-icons/material-rounded/Place';
-import { WeatherName, WeatherCode } from '@/models/Weather';
+import { WeatherCode } from '@/models/Weather';
 import Button from '@/components/common/Button';
 import CircleButton from '@/components/common/CircleButton';
 import { TemperatureType } from '@/models/Weather';
-import { weatherIcons, temperatureUnits } from '@/constants/weather';
+import {
+  weatherIcons,
+  weatherNames,
+  temperatureUnits,
+} from '@/constants/weather';
 import { fonts, colors } from '@/styles/constants';
 import { dateFormat } from '@/utils/date';
 import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
 type Props = {
-  today: string;
-  weather: WeatherName;
-  weatherCode: WeatherCode;
-  temperature: number;
-  location: string;
+  today?: string;
+  weatherCode?: WeatherCode;
+  temperature?: number;
+  location?: string;
   mode: TemperatureType;
 };
 
 const WeatherTop: VFC<Props> = ({
   today,
-  weather,
   weatherCode,
   temperature,
   location,
   mode,
 }) => {
   let roundTemp;
-  if (mode === 'celsius') {
-    roundTemp = Math.round(temperature);
-  } else if (mode === 'fahrenheit') {
-    roundTemp = convertCelsiusToFahrenheit(temperature);
+  if (temperature) {
+    if (mode === 'celsius') {
+      roundTemp = Math.round(temperature);
+    } else if (mode === 'fahrenheit') {
+      roundTemp = convertCelsiusToFahrenheit(temperature);
+    }
   }
 
   return (
@@ -49,21 +53,26 @@ const WeatherTop: VFC<Props> = ({
       <div css={[watherTopContents, watherTopContentLayout]}>
         <div css={contentsBgImgBlock}>
           <p css={contentsImgBlock}>
-            <Image
-              src={weatherIcons[weatherCode]}
-              alt={weather}
-              layout="fill"
-            />
+            {weatherCode && (
+              <Image
+                src={weatherIcons[weatherCode]}
+                alt={weatherNames[weatherCode]}
+                layout="fill"
+              />
+            )}
           </p>
         </div>
         <p css={contentsTemperature}>
           <em>{roundTemp}</em>
           {temperatureUnits[mode]}
         </p>
-        <p css={contentsWeather}>{weather}</p>
+        <p css={contentsWeather}>
+          {weatherCode ? weatherNames[weatherCode] : '-'}
+        </p>
         <div css={contentsSubTextBlock}>
           <small css={contentsDate}>
-            Today - <time dateTime={today}>{dateFormat(today)}</time>
+            Today -{' '}
+            <time dateTime={today}>{today ? dateFormat(today) : '-, - -'}</time>
           </small>
           <small css={contentsLocation}>
             <Place size={24} />
@@ -76,7 +85,6 @@ const WeatherTop: VFC<Props> = ({
 };
 
 const watherTop = css`
-  min-width: 480px;
   padding: 40px 0;
   background-color: ${colors.bgLighten};
 `;

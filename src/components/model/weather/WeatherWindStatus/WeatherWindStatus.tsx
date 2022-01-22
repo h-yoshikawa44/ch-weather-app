@@ -7,8 +7,8 @@ import { windAngles } from '@/constants/weather';
 import { fonts, colors } from '@/styles/constants';
 
 type Props = {
-  speed: number;
-  compass: WindDirectionCompass;
+  speed?: number;
+  compass?: WindDirectionCompass;
 };
 
 const WeatherWindStatus: VFC<Props> = ({ speed, compass }) => {
@@ -17,11 +17,14 @@ const WeatherWindStatus: VFC<Props> = ({ speed, compass }) => {
       <div css={weatherWindStatusLayout}>
         <h4 css={weatherWindStatusTitle}>Wind status</h4>
         <p css={weatherWindStatusSpeed}>
-          <em>{Math.round(speed)}</em>mph
+          <em>{speed ? Math.round(speed) : '-'}</em>mph
         </p>
         <p css={weatherWindStatusCompassBlock}>
           <span css={compassBlockIconBg}>
-            <Navigation css={compassBlockIcon(compass)} size={14} />
+            <Navigation
+              css={compass ? compassBlockIcon(compass) : 'N'}
+              size={14}
+            />
           </span>
           <i css={compassBlockValue}>{compass}</i>
         </p>

@@ -17,7 +17,7 @@ const CircleButton: FC<Props> = ({ color, children, ...props }) => {
 };
 
 const circleButton = css`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 12px;
