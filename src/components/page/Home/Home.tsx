@@ -13,20 +13,16 @@ import useWeather from '@/hooks/useWeather';
 
 const Home: VFC = () => {
   const {
+    isLoading: isLoadingSetting,
     errorMessage: errorMessageSetting,
     currentLocation,
     temperatureMode,
   } = useWeatherSetting();
-  const {
-    isIdle,
-    isLoading,
-    error,
-    data: weather,
-  } = useWeather(currentLocation?.woeId, {
-    enabled: !!currentLocation?.woeId,
-  });
+  const { isLoading, errorMessage, weather } = useWeather(
+    currentLocation?.woeId
+  );
 
-  if (isIdle || isLoading) {
+  if (isLoadingSetting || isLoading) {
     return (
       <main css={darkBgColor}>
         <p css={guideMessageBlock}>
@@ -36,14 +32,12 @@ const Home: VFC = () => {
     );
   }
 
-  if (errorMessageSetting || error) {
+  if (errorMessageSetting || errorMessage) {
     return (
       <main css={darkBgColor}>
         <p css={guideMessageBlock}>
           <small css={guideMessageText}>
-            {errorMessageSetting
-              ? errorMessageSetting
-              : 'Sorry, Failed to retrieve weather forecast information. Please take some time and try again.'}
+            {errorMessageSetting ? errorMessageSetting : errorMessage}
           </small>
         </p>
       </main>

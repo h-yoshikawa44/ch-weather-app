@@ -21,9 +21,8 @@ const useWeatherSetting = () => {
     useState<TemperatureType>('celsius');
 
   useEffect(() => {
+    setIsLoading(true);
     const onSuccess = (position: GeolocationPosition) => {
-      setIsLoading(true);
-
       // 位置情報が取得できた時は、最寄りの場所をデフォルトロケーションとする
       const searchParams: QueryParams = {
         lattlong: `${position?.coords?.latitude},${position?.coords?.longitude}`,
@@ -42,12 +41,12 @@ const useWeatherSetting = () => {
           } else if (err instanceof Error) {
             setErrorMessage(errorMessageText);
           }
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
-      setIsLoading(false);
     };
     const onError = (err: GeolocationPositionError) => {
-      setIsLoading(true);
-
       // 位置情報取得ができないときは、東京の緯度経度で取得
       const searchParams: QueryParams = {
         lattlong: '35.670479, 139.740921',
@@ -66,8 +65,10 @@ const useWeatherSetting = () => {
           } else if (err instanceof Error) {
             setErrorMessage(errorMessageText);
           }
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
-      setIsLoading(false);
     };
     const options: PositionOptions = {
       maximumAge: 30000,
