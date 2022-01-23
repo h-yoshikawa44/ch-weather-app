@@ -4,7 +4,7 @@ import Card from '@/components/common/Card';
 import { fonts, colors } from '@/styles/constants';
 
 type Props = {
-  humidity: number;
+  humidity?: number;
 };
 
 const WeatherHumidity: VFC<Props> = ({ humidity }) => {
@@ -13,7 +13,7 @@ const WeatherHumidity: VFC<Props> = ({ humidity }) => {
       <div css={weatherHumidityLayout}>
         <h4 css={weatherHumidityTitle}>Humidity</h4>
         <p css={weatherHumidityValue}>
-          <em>{humidity}</em>%
+          <em>{humidity ?? '-'}</em>%
         </p>
         <div css={weatherHumidityMeterBlock}>
           <label css={meterBlockLabel} htmlFor="weather-humidity-meter">
@@ -70,7 +70,8 @@ const weatherHumidityValue = css`
 `;
 
 const weatherHumidityMeterBlock = css`
-  margin-top: 16px;
+  width: 100%;
+  margin-top: 12px;
 `;
 
 const meterBlockLabel = css`
@@ -86,6 +87,8 @@ const meterBlockLabel = css`
 `;
 
 const meterBlockMeter = css`
+  width: 100%;
+
   &::-webkit-meter-bar {
     background-color: ${colors.bar};
   }

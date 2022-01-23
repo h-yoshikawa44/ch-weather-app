@@ -15,15 +15,17 @@ const units = {
 
 type Props = {
   type: 'visibility' | 'airPressure';
-  value: number;
+  value?: number;
 };
 
 const WeatherHighlightCommon: VFC<Props> = ({ type, value }) => {
   let roundValue;
-  if (type === 'visibility') {
-    roundValue = Math.round(value * 10) / 10;
-  } else if (type === 'airPressure') {
-    roundValue = Math.round(value);
+  if (value) {
+    if (type === 'visibility') {
+      roundValue = Math.round(value * 10) / 10;
+    } else if (type === 'airPressure') {
+      roundValue = Math.round(value);
+    }
   }
 
   return (
@@ -31,7 +33,7 @@ const WeatherHighlightCommon: VFC<Props> = ({ type, value }) => {
       <div css={weatherHighlightCommonLayout}>
         <h4 css={weatherHighlightCommonTitle}>{title[type]}</h4>
         <p css={weatherHighlightCommonValue}>
-          <em>{roundValue}</em>
+          <em>{roundValue ?? '-'}</em>
           <span>{units[type]}</span>
         </p>
       </div>

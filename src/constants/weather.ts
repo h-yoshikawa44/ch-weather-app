@@ -11,6 +11,19 @@ const weatherIcons = {
   c: '/weather/Clear.png',
 };
 
+const weatherNames = {
+  sn: 'Snow',
+  sl: 'Sleet',
+  h: 'Hail',
+  t: 'Thunderstorm',
+  hr: 'HeavyRain',
+  lr: 'LightRain',
+  s: 'Shower',
+  hc: 'HeavyCloud',
+  lc: 'LightCloud',
+  c: 'Clear',
+};
+
 const temperatureUnits = {
   celsius: '℃',
   fahrenheit: '℉',
@@ -35,4 +48,4 @@ const windAngles = {
   NNW: 337.5,
 };
 
-export { weatherIcons, temperatureUnits, windAngles };
+export { weatherIcons, weatherNames, temperatureUnits, windAngles };

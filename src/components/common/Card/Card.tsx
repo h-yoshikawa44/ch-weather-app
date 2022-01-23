@@ -7,7 +7,7 @@ const Card: FC = ({ children }) => {
 };
 
 const card = css`
-  padding: 20px 24px;
+  padding: 24px 48px;
   background-color: ${colors.bgLighten};
 `;
 

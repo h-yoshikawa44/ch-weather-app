@@ -3,37 +3,43 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
 import { Place } from '@emotion-icons/material-rounded/Place';
-import { WeatherName, WeatherCode } from '@/models/Weather';
+import { WeatherCode } from '@/models/Weather';
 import Button from '@/components/common/Button';
 import CircleButton from '@/components/common/CircleButton';
 import { TemperatureType } from '@/models/Weather';
-import { weatherIcons, temperatureUnits } from '@/constants/weather';
-import { fonts, colors } from '@/styles/constants';
+import {
+  weatherIcons,
+  weatherNames,
+  temperatureUnits,
+} from '@/constants/weather';
+import { breakPoint, fonts, colors } from '@/styles/constants';
 import { dateFormat } from '@/utils/date';
 import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
 type Props = {
-  today: string;
-  weather: WeatherName;
-  weatherCode: WeatherCode;
-  temperature: number;
-  location: string;
+  today?: string;
+  weatherCode?: WeatherCode;
+  temperature?: number;
+  location?: string;
   mode: TemperatureType;
+  handleInitialCurrentLocation: VoidFunction;
 };
 
 const WeatherTop: VFC<Props> = ({
   today,
-  weather,
   weatherCode,
   temperature,
   location,
   mode,
+  handleInitialCurrentLocation,
 }) => {
   let roundTemp;
-  if (mode === 'celsius') {
-    roundTemp = Math.round(temperature);
-  } else if (mode === 'fahrenheit') {
-    roundTemp = convertCelsiusToFahrenheit(temperature);
+  if (temperature) {
+    if (mode === 'celsius') {
+      roundTemp = Math.round(temperature);
+    } else if (mode === 'fahrenheit') {
+      roundTemp = convertCelsiusToFahrenheit(temperature);
+    }
   }
 
   return (
@@ -41,7 +47,7 @@ const WeatherTop: VFC<Props> = ({
       <header>
         <div css={[watherTopHeaderContainer, watherTopHeaderLayout]}>
           <Button>Seach for places</Button>
-          <CircleButton color="dark">
+          <CircleButton color="dark" onClick={handleInitialCurrentLocation}>
             <MyLocation size={24} />
           </CircleButton>
         </div>
@@ -49,21 +55,27 @@ const WeatherTop: VFC<Props> = ({
       <div css={[watherTopContents, watherTopContentLayout]}>
         <div css={contentsBgImgBlock}>
           <p css={contentsImgBlock}>
-            <Image
-              src={weatherIcons[weatherCode]}
-              alt={weather}
-              layout="fill"
-            />
+            {weatherCode && (
+              <Image
+                src={weatherIcons[weatherCode]}
+                alt={weatherNames[weatherCode]}
+                layout="fill"
+                objectFit="contain"
+              />
+            )}
           </p>
         </div>
         <p css={contentsTemperature}>
           <em>{roundTemp}</em>
           {temperatureUnits[mode]}
         </p>
-        <p css={contentsWeather}>{weather}</p>
+        <p css={contentsWeather}>
+          {weatherCode ? weatherNames[weatherCode] : '-'}
+        </p>
         <div css={contentsSubTextBlock}>
           <small css={contentsDate}>
-            Today - <time dateTime={today}>{dateFormat(today)}</time>
+            Today -{' '}
+            <time dateTime={today}>{today ? dateFormat(today) : '-, - -'}</time>
           </small>
           <small css={contentsLocation}>
             <Place size={24} />
@@ -76,13 +88,15 @@ const WeatherTop: VFC<Props> = ({
 };
 
 const watherTop = css`
-  min-width: 480px;
   padding: 40px 0;
   background-color: ${colors.bgLighten};
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    padding: 20px 0 104px;
+  }
 `;
 
 const watherTopHeaderContainer = css`
-  max-width: 600px;
   padding: 0 8%;
   margin: 0 auto;
 `;
@@ -93,12 +107,15 @@ const watherTopHeaderLayout = css`
 
 const watherTopContents = css`
   margin-top: 40px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: 8px;
+  }
 `;
 
 const watherTopContentLayout = css`
-  display: grid;
-  grid-template-columns: 100%;
-  row-gap: 80px;
+  display: flex;
+  flex-direction: column;
   place-items: center;
   justify-content: center;
 `;
@@ -116,12 +133,13 @@ const contentsBgImgBlock = css`
 
 const contentsImgBlock = css`
   position: relative;
-  width: 200px;
+  width: 60%;
   height: 240px;
   margin: 80px auto 0;
 `;
 
 const contentsTemperature = css`
+  margin-top: 40px;
   font-family: ${fonts.raleway};
   font-size: 48px;
   font-style: normal;
@@ -135,21 +153,36 @@ const contentsTemperature = css`
     line-height: 169px;
     color: ${colors.gray5};
   }
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: -30px;
+  }
 `;
 
 const contentsWeather = css`
+  margin-top: 80px;
   font-family: ${fonts.raleway};
   font-size: 36px;
   font-style: normal;
   font-weight: 600;
   line-height: 42px;
   color: ${colors.gray4};
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: 24px;
+  }
 `;
 
 const contentsSubTextBlock = css`
   display: grid;
-  row-gap: 24px;
+  row-gap: 32px;
   place-items: center;
+  margin-top: 88px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    row-gap: 32px;
+    margin-top: 48px;
+  }
 `;
 
 const contentsDate = css`
