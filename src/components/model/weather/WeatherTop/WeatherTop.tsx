@@ -58,6 +58,7 @@ const WeatherTop: VFC<Props> = ({
                 src={weatherIcons[weatherCode]}
                 alt={weatherNames[weatherCode]}
                 layout="fill"
+                objectFit="contain"
               />
             )}
           </p>
@@ -124,7 +125,7 @@ const contentsBgImgBlock = css`
 
 const contentsImgBlock = css`
   position: relative;
-  width: 200px;
+  width: 60%;
   height: 240px;
   margin: 80px auto 0;
 `;

@@ -49,6 +49,7 @@ const WeatherDayCard: VFC<Props> = ({
           src={weatherIcons[weatherCode]}
           alt={weatherNames[weatherCode]}
           layout="fill"
+          objectFit="contain"
         />
       </p>
       <p css={weatherDayTempBlock}>
