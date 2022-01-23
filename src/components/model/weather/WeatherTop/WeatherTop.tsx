@@ -22,6 +22,7 @@ type Props = {
   temperature?: number;
   location?: string;
   mode: TemperatureType;
+  handleInitialCurrentLocation: VoidFunction;
 };
 
 const WeatherTop: VFC<Props> = ({
@@ -30,6 +31,7 @@ const WeatherTop: VFC<Props> = ({
   temperature,
   location,
   mode,
+  handleInitialCurrentLocation,
 }) => {
   let roundTemp;
   if (temperature) {
@@ -45,7 +47,7 @@ const WeatherTop: VFC<Props> = ({
       <header>
         <div css={[watherTopHeaderContainer, watherTopHeaderLayout]}>
           <Button>Seach for places</Button>
-          <CircleButton color="dark">
+          <CircleButton color="dark" onClick={handleInitialCurrentLocation}>
             <MyLocation size={24} />
           </CircleButton>
         </div>

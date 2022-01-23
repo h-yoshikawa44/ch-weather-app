@@ -20,7 +20,7 @@ const useWeatherSetting = () => {
   const [temperatureMode, setTemperatureMode] =
     useState<TemperatureType>('celsius');
 
-  useEffect(() => {
+  const handleInitialCurrentLocation = useCallback(() => {
     setIsLoading(true);
     const onSuccess = (position: GeolocationPosition) => {
       // 位置情報が取得できた時は、最寄りの場所をデフォルトロケーションとする
@@ -78,6 +78,13 @@ const useWeatherSetting = () => {
     navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
   }, []);
 
+  useEffect(() => {
+    if (currentLocation) {
+      return;
+    }
+    handleInitialCurrentLocation();
+  }, [currentLocation, handleInitialCurrentLocation]);
+
   const handleSelectLocation = useCallback((location: Location) => {
     setCurrentLocation({ name: location.title, woeId: location.woeid });
   }, []);
@@ -91,6 +98,7 @@ const useWeatherSetting = () => {
     errorMessage,
     currentLocation,
     temperatureMode,
+    handleInitialCurrentLocation,
     handleSelectLocation,
     handleSwitchTemperatureMode,
   };

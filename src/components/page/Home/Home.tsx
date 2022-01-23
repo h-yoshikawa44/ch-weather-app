@@ -17,6 +17,7 @@ const Home: VFC = () => {
     errorMessage: errorMessageSetting,
     currentLocation,
     temperatureMode,
+    handleInitialCurrentLocation,
     handleSwitchTemperatureMode,
   } = useWeatherSetting();
   const { isLoading, errorMessage, weather } = useWeather(
@@ -57,6 +58,7 @@ const Home: VFC = () => {
           temperature={today?.the_temp}
           location={weather?.title}
           mode={temperatureMode}
+          handleInitialCurrentLocation={handleInitialCurrentLocation}
         />
         <div css={[darkBgColor, rightAreaLayout]}>
           <main>
