@@ -142,12 +142,16 @@ const guideMessageText = css`
 const mainLayout = css`
   display: grid;
   grid-template-columns: 30% 70%;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 const rightAreaLayout = css`
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
 
   main {
     flex: 1 0 auto;
@@ -162,6 +166,10 @@ const rightAreaContainer = css`
 
 const rightAreaHeader = css`
   margin-top: 42px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: 24px;
+  }
 `;
 
 const rightAreaHeaderLayout = css`
@@ -174,6 +182,10 @@ const rightAreaHeaderLayout = css`
 
 const rightAreaWeekSection = css`
   margin-top: 64px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: 32px;
+  }
 `;
 
 const rightAreaWeekSectionLayout = css`
@@ -181,10 +193,19 @@ const rightAreaWeekSectionLayout = css`
   grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
   row-gap: 16px;
   column-gap: 3%;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    row-gap: 32px;
+    column-gap: 8%;
+  }
 `;
 
 const rightAreaHighlightSection = css`
   margin-top: 72px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: 48px;
+  }
 `;
 
 const rightAreaHighlightSectionTitle = css`
@@ -198,12 +219,21 @@ const rightAreaHighlightSectionTitle = css`
 
 const highlightSectionCardBlock = css`
   margin-top: 32px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-bottom: 32px;
+  }
 `;
 
 const highlightSectionCardBlockLayout = css`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 48px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    grid-template-columns: 100%;
+    gap: 32px;
+  }
 `;
 
 export default Home;

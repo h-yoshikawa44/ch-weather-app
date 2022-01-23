@@ -12,7 +12,7 @@ import {
   weatherNames,
   temperatureUnits,
 } from '@/constants/weather';
-import { fonts, colors } from '@/styles/constants';
+import { breakPoint, fonts, colors } from '@/styles/constants';
 import { dateFormat } from '@/utils/date';
 import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
@@ -88,10 +88,13 @@ const WeatherTop: VFC<Props> = ({
 const watherTop = css`
   padding: 40px 0;
   background-color: ${colors.bgLighten};
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    padding: 20px 0 104px;
+  }
 `;
 
 const watherTopHeaderContainer = css`
-  max-width: 600px;
   padding: 0 8%;
   margin: 0 auto;
 `;
@@ -102,12 +105,15 @@ const watherTopHeaderLayout = css`
 
 const watherTopContents = css`
   margin-top: 40px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: 8px;
+  }
 `;
 
 const watherTopContentLayout = css`
-  display: grid;
-  grid-template-columns: 100%;
-  row-gap: 80px;
+  display: flex;
+  flex-direction: column;
   place-items: center;
   justify-content: center;
 `;
@@ -131,6 +137,7 @@ const contentsImgBlock = css`
 `;
 
 const contentsTemperature = css`
+  margin-top: 40px;
   font-family: ${fonts.raleway};
   font-size: 48px;
   font-style: normal;
@@ -144,21 +151,36 @@ const contentsTemperature = css`
     line-height: 169px;
     color: ${colors.gray5};
   }
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: -30px;
+  }
 `;
 
 const contentsWeather = css`
+  margin-top: 80px;
   font-family: ${fonts.raleway};
   font-size: 36px;
   font-style: normal;
   font-weight: 600;
   line-height: 42px;
   color: ${colors.gray4};
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    margin-top: 24px;
+  }
 `;
 
 const contentsSubTextBlock = css`
   display: grid;
-  row-gap: 24px;
+  row-gap: 32px;
   place-items: center;
+  margin-top: 88px;
+
+  @media (max-width: ${breakPoint.md - 1}px) {
+    row-gap: 32px;
+    margin-top: 48px;
+  }
 `;
 
 const contentsDate = css`
