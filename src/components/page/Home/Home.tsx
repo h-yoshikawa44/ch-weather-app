@@ -17,6 +17,7 @@ const Home: VFC = () => {
     errorMessage: errorMessageSetting,
     currentLocation,
     temperatureMode,
+    handleSwitchTemperatureMode,
   } = useWeatherSetting();
   const { isLoading, errorMessage, weather } = useWeather(
     currentLocation?.woeId
@@ -62,8 +63,22 @@ const Home: VFC = () => {
             <div css={rightAreaContainer}>
               <header css={rightAreaHeader}>
                 <div css={rightAreaHeaderLayout}>
-                  <CircleButton color="light">℃</CircleButton>
-                  <CircleButton color="dark">℉</CircleButton>
+                  <CircleButton
+                    color="light"
+                    onClick={() => {
+                      handleSwitchTemperatureMode('celsius');
+                    }}
+                  >
+                    ℃
+                  </CircleButton>
+                  <CircleButton
+                    color="dark"
+                    onClick={() => {
+                      handleSwitchTemperatureMode('fahrenheit');
+                    }}
+                  >
+                    ℉
+                  </CircleButton>
                 </div>
               </header>
               <section css={rightAreaWeekSection}>
