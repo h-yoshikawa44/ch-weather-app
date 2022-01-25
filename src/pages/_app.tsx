@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { AppProps } from 'next/app';
 import { Global } from '@emotion/react';
 import 'focus-visible';
+import 'wicg-inert';
 import { globalStyle } from '@/styles/globals';
 
 function MyApp({ Component, pageProps }: AppProps) {

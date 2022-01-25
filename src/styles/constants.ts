@@ -13,6 +13,12 @@ export const breakPoint = {
   xl,
 };
 
+const menu = 1200;
+
+export const zIndex = {
+  menu,
+};
+
 const raleway = 'Raleway, sans-serif';
 const montserrat = 'Montserrat, sans-serif';
 
@@ -32,11 +38,14 @@ const gray5 = '#E7E7EB';
 const white = '#fff';
 
 const yellow = '#FFEC65';
+const blue = '#3C47E9';
 
 const bgLighten = blackLighten;
 const bg = black1;
 const bar = gray5;
 const barActive = yellow;
+const placeHolder = '#616475';
+const border = '#616475';
 
 export const colors = {
   black1,
@@ -49,8 +58,11 @@ export const colors = {
   gray5,
   white,
   yellow,
+  blue,
   bgLighten,
   bg,
   bar,
   barActive,
+  placeHolder,
+  border,
 };
