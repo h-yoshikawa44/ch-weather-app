@@ -91,6 +91,7 @@ const WeatherTop: VFC<Props> = ({
 };
 
 const watherTop = css`
+  height: 100%;
   padding: 40px 0;
   background-color: ${colors.bgLighten};
 
