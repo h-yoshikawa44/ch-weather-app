@@ -12,10 +12,10 @@
       Demo
     </a>
     <span> | </span>
-    <!-- <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/1juVePEnnmpjMCzrbvRr">
       Solution
     </a>
-    <span> | </span> -->
+    <span> | </span>
     <a href="https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv">
       Challenge
     </a>
@@ -61,6 +61,7 @@ When you access the app, it gets your location and retrieves and displays the we
 
 Click the button to the right of "Search for places" to request the above process again.  
 The menu that opens from "Search for places" allows you to search for a location and display the weather forecast for the selected location.
+
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
