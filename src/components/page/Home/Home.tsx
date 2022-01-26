@@ -193,7 +193,7 @@ const guideMessageText = css`
   font-style: normal;
   font-weight: 500;
   line-height: 28px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 `;
 
 const mainLayout = css`
@@ -274,7 +274,7 @@ const rightAreaHighlightSectionTitle = css`
   font-style: normal;
   font-weight: bold;
   line-height: 28px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 const highlightSectionCardBlock = css`

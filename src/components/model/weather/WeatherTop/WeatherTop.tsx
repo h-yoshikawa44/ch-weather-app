@@ -149,13 +149,13 @@ const contentsTemperature = css`
   font-style: normal;
   font-weight: 100;
   line-height: 56px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 
   em {
     font-size: 144px;
     font-weight: 500;
     line-height: 169px;
-    color: ${colors.gray5};
+    color: ${colors.gray6};
   }
 
   @media (max-width: ${breakPoint.md - 1}px) {
@@ -170,7 +170,7 @@ const contentsWeather = css`
   font-style: normal;
   font-weight: 600;
   line-height: 42px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 
   @media (max-width: ${breakPoint.md - 1}px) {
     margin-top: 24px;
@@ -196,7 +196,7 @@ const contentsDate = css`
   font-style: normal;
   font-weight: 500;
   line-height: 21px;
-  color: ${colors.gray3};
+  color: ${colors.gray4};
 `;
 
 const contentsLocation = css`
@@ -207,7 +207,7 @@ const contentsLocation = css`
   font-style: normal;
   font-weight: 600;
   line-height: 21px;
-  color: ${colors.gray3};
+  color: ${colors.gray4};
 `;
 
 const contentsLocationText = css`

@@ -24,7 +24,7 @@ const searchInput = css`
   display: inline-flex;
   align-items: center;
   padding: 12px;
-  border: 1px solid ${colors.gray5};
+  border: 1px solid ${colors.gray6};
   transition: border 0.3s;
 
   &:focus-within {
@@ -46,7 +46,7 @@ const searchInputBase = css`
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
   background-color: transparent;
   border: none;
   outline: none;

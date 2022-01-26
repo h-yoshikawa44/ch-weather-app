@@ -71,7 +71,7 @@ const weatherDayDate = css`
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
   text-align: center;
   white-space: nowrap;
 `;
@@ -96,12 +96,12 @@ const weatherDayTempBlock = css`
 
 const tempBlockMax = css`
   display: block;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 const tempBlockMin = css`
   display: block;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 `;
 
 export default WeatherDayCard;

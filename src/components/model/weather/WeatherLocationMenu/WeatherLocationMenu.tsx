@@ -115,7 +115,7 @@ const weatherLocationMenu = css`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: ${colors.gray3};
+    background-color: ${colors.gray4};
     border-radius: 100px;
   }
 
@@ -139,7 +139,7 @@ const weatherLocationMenuConteiner = css`
 const weatherLocationMenuCloseButton = css`
   display: block;
   margin-left: auto;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -176,7 +176,7 @@ const weatherLocationMenuGuideMessage = css`
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 const weatherLocationMenuLocationList = css`
@@ -220,7 +220,7 @@ const locationListItemButton = css`
 `;
 
 const locationListItemButtonText = css`
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 export default WeatherLocationMenu;

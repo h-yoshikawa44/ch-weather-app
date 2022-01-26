@@ -44,18 +44,18 @@ const button = css`
 const buttonColor = (color: Color) => {
   if (color === 'gray') {
     return css`
-      color: ${colors.gray5};
-      background-color: ${colors.gray2};
+      color: ${colors.gray6};
+      background-color: ${colors.gray3};
 
       &:hover,
       &:focus {
         /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray2, 0.15)};
+        background-color: ${createDarkenColor(colors.gray3, 0.15)};
       }
     `;
   } else if (color === 'blue') {
     return css`
-      color: ${colors.gray5};
+      color: ${colors.gray6};
       background-color: ${colors.blue};
 
       &:hover,

@@ -44,7 +44,7 @@ const weatherWindStatusTitle = css`
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 const weatherWindStatusSpeed = css`
@@ -54,7 +54,7 @@ const weatherWindStatusSpeed = css`
   font-style: normal;
   font-weight: 500;
   line-height: 42px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 
   em {
     font-size: 64px;
@@ -74,13 +74,13 @@ const compassBlockIconBg = css`
   align-items: center;
   justify-content: center;
   padding: 4px;
-  background-color: ${colors.gray2};
+  background-color: ${colors.gray3};
   border-radius: 50%;
 `;
 
 const compassBlockIcon = (compass: WindDirectionCompass) => {
   return css`
-    color: ${colors.gray5};
+    color: ${colors.gray6};
     transform: rotate(${windAngles[compass]}deg);
   `;
 };
@@ -92,7 +92,7 @@ const compassBlockValue = css`
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 export default WeatherWindStatus;
