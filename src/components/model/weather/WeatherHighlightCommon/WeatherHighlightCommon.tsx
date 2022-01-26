@@ -52,7 +52,7 @@ const weatherHighlightCommonTitle = css`
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 const weatherHighlightCommonValue = css`
@@ -62,7 +62,7 @@ const weatherHighlightCommonValue = css`
   font-style: normal;
   font-weight: 500;
   line-height: 42px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 
   em {
     font-size: 64px;

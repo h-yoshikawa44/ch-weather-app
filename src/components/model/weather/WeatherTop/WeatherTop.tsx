@@ -1,12 +1,11 @@
-import { VFC } from 'react';
+import { VFC, Fragment } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
 import { Place } from '@emotion-icons/material-rounded/Place';
-import { WeatherCode } from '@/models/Weather';
 import Button from '@/components/common/Button';
 import CircleButton from '@/components/common/CircleButton';
-import { TemperatureType } from '@/models/Weather';
+import { WeatherCode, TemperatureType } from '@/models/Weather';
 import {
   weatherIcons,
   weatherNames,
@@ -22,6 +21,7 @@ type Props = {
   temperature?: number;
   location?: string;
   mode: TemperatureType;
+  handleLocationMenuOpen: VoidFunction;
   handleInitialCurrentLocation: VoidFunction;
 };
 
@@ -31,6 +31,7 @@ const WeatherTop: VFC<Props> = ({
   temperature,
   location,
   mode,
+  handleLocationMenuOpen,
   handleInitialCurrentLocation,
 }) => {
   let roundTemp;
@@ -45,8 +46,10 @@ const WeatherTop: VFC<Props> = ({
   return (
     <div css={watherTop}>
       <header>
-        <div css={[watherTopHeaderContainer, watherTopHeaderLayout]}>
-          <Button>Seach for places</Button>
+        <div css={[watherTopContainer, watherTopHeaderLayout]}>
+          <Button color="gray" onClick={handleLocationMenuOpen}>
+            Seach for places
+          </Button>
           <CircleButton color="dark" onClick={handleInitialCurrentLocation}>
             <MyLocation size={24} />
           </CircleButton>
@@ -96,10 +99,11 @@ const watherTop = css`
   }
 `;
 
-const watherTopHeaderContainer = css`
+const watherTopContainer = css`
   padding: 0 8%;
   margin: 0 auto;
 `;
+
 const watherTopHeaderLayout = css`
   display: flex;
   justify-content: space-between;
@@ -145,13 +149,13 @@ const contentsTemperature = css`
   font-style: normal;
   font-weight: 100;
   line-height: 56px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 
   em {
     font-size: 144px;
     font-weight: 500;
     line-height: 169px;
-    color: ${colors.gray5};
+    color: ${colors.gray6};
   }
 
   @media (max-width: ${breakPoint.md - 1}px) {
@@ -166,7 +170,7 @@ const contentsWeather = css`
   font-style: normal;
   font-weight: 600;
   line-height: 42px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 
   @media (max-width: ${breakPoint.md - 1}px) {
     margin-top: 24px;
@@ -192,7 +196,7 @@ const contentsDate = css`
   font-style: normal;
   font-weight: 500;
   line-height: 21px;
-  color: ${colors.gray3};
+  color: ${colors.gray4};
 `;
 
 const contentsLocation = css`
@@ -203,7 +207,7 @@ const contentsLocation = css`
   font-style: normal;
   font-weight: 600;
   line-height: 21px;
-  color: ${colors.gray3};
+  color: ${colors.gray4};
 `;
 
 const contentsLocationText = css`

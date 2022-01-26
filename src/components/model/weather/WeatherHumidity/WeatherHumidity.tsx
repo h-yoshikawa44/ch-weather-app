@@ -50,7 +50,7 @@ const weatherHumidityTitle = css`
   font-style: normal;
   font-weight: 500;
   line-height: 19px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 const weatherHumidityValue = css`
@@ -60,7 +60,7 @@ const weatherHumidityValue = css`
   font-style: normal;
   font-weight: 400;
   line-height: 42px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 
   em {
     font-size: 64px;
@@ -83,7 +83,7 @@ const meterBlockLabel = css`
   font-style: normal;
   font-weight: bold;
   line-height: 14px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 `;
 
 const meterBlockMeter = css`
@@ -106,7 +106,7 @@ const meterBlockLabelPer = css`
   font-style: normal;
   font-weight: bold;
   line-height: 14px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
   text-align: right;
 `;
 

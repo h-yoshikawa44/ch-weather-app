@@ -5,11 +5,13 @@ import WeatherDay from '@/components/model/weather/WeatherDay';
 import WeatherWindStatus from '@/components/model/weather/WeatherWindStatus';
 import WeatherHumidity from '@/components/model/weather/WeatherHumidity';
 import WeatherHighlightCommon from '@/components/model/weather/WeatherHighlightCommon';
+import WeatherLocationMenu from '@/components/model/weather/WeatherLocationMenu';
 import CircleButton from '@/components/common/CircleButton';
 import Footer from '@/components/common/Footer';
 import { breakPoint, fonts, colors } from '@/styles/constants';
 import useWeatherSetting from '@/hooks/useWeatherSetting';
 import useWeather from '@/hooks/useWeather';
+import useLocationMenu from '@/hooks/useLocationMenu';
 
 const Home: VFC = () => {
   const {
@@ -18,11 +20,26 @@ const Home: VFC = () => {
     currentLocation,
     temperatureMode,
     handleInitialCurrentLocation,
+    handleSelectLocation,
     handleSwitchTemperatureMode,
   } = useWeatherSetting();
+
   const { isLoading, errorMessage, weather } = useWeather(
     currentLocation?.woeId
   );
+
+  const {
+    open,
+    inertFlg,
+    query,
+    isLoading: isLoadingLocation,
+    errorMessage: errorMessageLocation,
+    locations,
+    handleLocationMenuOpen,
+    handleLocationMenuClose,
+    handleChangeSearchQuery,
+    handleSearchLocation,
+  } = useLocationMenu();
 
   if (isLoadingSetting || isLoading) {
     return (
@@ -52,15 +69,33 @@ const Home: VFC = () => {
   return (
     <Fragment>
       <div css={mainLayout}>
-        <WeatherTop
-          today={today?.applicable_date}
-          weatherCode={today?.weather_state_abbr}
-          temperature={today?.the_temp}
-          location={weather?.title}
-          mode={temperatureMode}
-          handleInitialCurrentLocation={handleInitialCurrentLocation}
-        />
-        <div css={[darkBgColor, rightAreaLayout]}>
+        <div
+          ref={(node) =>
+            node &&
+            (open
+              ? node.setAttribute('inert', '')
+              : node.removeAttribute('inert'))
+          }
+        >
+          <WeatherTop
+            today={today?.applicable_date}
+            weatherCode={today?.weather_state_abbr}
+            temperature={today?.the_temp}
+            location={weather?.title}
+            mode={temperatureMode}
+            handleLocationMenuOpen={handleLocationMenuOpen}
+            handleInitialCurrentLocation={handleInitialCurrentLocation}
+          />
+        </div>
+        <div
+          css={[darkBgColor, rightAreaLayout]}
+          ref={(node) =>
+            node &&
+            (inertFlg
+              ? node.setAttribute('inert', '')
+              : node.removeAttribute('inert'))
+          }
+        >
           <main>
             <div css={rightAreaContainer}>
               <header css={rightAreaHeader}>
@@ -125,6 +160,17 @@ const Home: VFC = () => {
           <Footer />
         </div>
       </div>
+      <WeatherLocationMenu
+        open={open}
+        query={query}
+        isLoading={isLoadingLocation}
+        errorMessage={errorMessageLocation}
+        locations={locations}
+        handleLocationMenuClose={handleLocationMenuClose}
+        handleChangeSearchQuery={handleChangeSearchQuery}
+        handleSearchLocation={handleSearchLocation}
+        handleSelectLocation={handleSelectLocation}
+      />
     </Fragment>
   );
 };
@@ -147,11 +193,14 @@ const guideMessageText = css`
   font-style: normal;
   font-weight: 500;
   line-height: 28px;
-  color: ${colors.gray4};
+  color: ${colors.gray5};
 `;
 
 const mainLayout = css`
   display: grid;
+
+  /* WeatherLocationMenu の right と合わせる
+    例 right が70%：30% 70%、right が0：100% */
   grid-template-columns: 30% 70%;
 
   @media (max-width: ${breakPoint.md - 1}px) {
@@ -225,7 +274,7 @@ const rightAreaHighlightSectionTitle = css`
   font-style: normal;
   font-weight: bold;
   line-height: 28px;
-  color: ${colors.gray5};
+  color: ${colors.gray6};
 `;
 
 const highlightSectionCardBlock = css`
@@ -238,7 +287,7 @@ const highlightSectionCardBlock = css`
 
 const highlightSectionCardBlockLayout = css`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 48px;
 
   @media (max-width: ${breakPoint.md - 1}px) {

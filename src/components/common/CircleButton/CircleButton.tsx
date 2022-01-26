@@ -36,12 +36,12 @@ const circleButtonColor = (color: Color) => {
   if (color === 'light') {
     return css`
       color: ${colors.black2};
-      background-color: ${colors.gray5};
+      background-color: ${colors.gray6};
 
       &:hover,
       &:focus {
         /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray5, 0.15)};
+        background-color: ${createDarkenColor(colors.gray6, 0.15)};
       }
 
       &:focus:not(.focus-visible) {
@@ -50,7 +50,7 @@ const circleButtonColor = (color: Color) => {
     `;
   } else if (color === 'dark') {
     return css`
-      color: ${colors.gray5};
+      color: ${colors.gray6};
       background-color: ${colors.gray1};
 
       &:hover,
