@@ -80,6 +80,9 @@ Other major libraries
 - [focus-visible](https://github.com/WICG/focus-visible)
 - [wicg-inert](https://github.com/WICG/inert)
 
+API
+- [MetaWeather API](https://www.metaweather.com/api/)
+
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
