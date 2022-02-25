@@ -16,6 +16,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" href="/favicon.ico" />
+          <meta name="robots" content="noindex, nofollow" />
         </Head>
         <body>
           <Main />
