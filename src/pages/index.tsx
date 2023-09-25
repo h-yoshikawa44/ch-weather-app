@@ -9,7 +9,7 @@ const Home = () => {
         <title>Weather app</title>
         <meta
           name="description"
-          content="devChallenges.io - Weather app | by h-yoshikawa44"
+          content="devChallenges.io(legacy) - Weather app | by h-yoshikawa44"
         />
       </Head>
       <HomePage />
