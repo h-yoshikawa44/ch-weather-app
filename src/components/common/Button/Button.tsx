@@ -2,7 +2,7 @@ import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
-import { createDarkenColor } from '@/libs/csx';
+import { createDarkenColor } from '@/lib/csx';
 
 type Color = 'gray' | 'blue';
 
@@ -37,7 +37,7 @@ const button = css`
     cursor: not-allowed;
   }
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     outline-color: transparent;
   }
 `;

@@ -204,7 +204,7 @@ const mainLayout = css`
     例 right が70%：30% 70%、right が0：100% */
   grid-template-columns: 30% 70%;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     grid-template-columns: 100%;
   }
 `;
@@ -228,7 +228,7 @@ const rightAreaContainer = css`
 const rightAreaHeader = css`
   margin-top: 42px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 24px;
   }
 `;
@@ -244,7 +244,7 @@ const rightAreaHeaderLayout = css`
 const rightAreaWeekSection = css`
   margin-top: 64px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 32px;
   }
 `;
@@ -254,7 +254,7 @@ const rightAreaWeekSectionLayout = css`
   grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
   gap: 16px 3%;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     gap: 32px 8%;
   }
 `;
@@ -262,7 +262,7 @@ const rightAreaWeekSectionLayout = css`
 const rightAreaHighlightSection = css`
   margin-top: 72px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 48px;
   }
 `;
@@ -279,7 +279,7 @@ const rightAreaHighlightSectionTitle = css`
 const highlightSectionCardBlock = css`
   margin-top: 32px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-bottom: 32px;
   }
 `;
@@ -289,7 +289,7 @@ const highlightSectionCardBlockLayout = css`
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 48px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     grid-template-columns: 100%;
     gap: 32px;
   }

@@ -120,7 +120,7 @@ const weatherLocationMenu = css`
     border-radius: 100px;
   }
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     right: 0;
   }
 `;
@@ -145,7 +145,7 @@ const weatherLocationMenuCloseButton = css`
   background-color: transparent;
   border: none;
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     border-color: transparent;
   }
 `;
@@ -215,7 +215,7 @@ const locationListItemButton = css`
     border: 1px solid ${colors.border};
   }
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     outline-color: transparent;
   }
 `;

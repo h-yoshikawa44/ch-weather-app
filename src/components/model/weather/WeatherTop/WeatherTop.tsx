@@ -96,7 +96,7 @@ const watherTop = css`
   padding: 40px 0;
   background-color: ${colors.bgLighten};
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     padding: 20px 0 104px;
   }
 `;
@@ -114,7 +114,7 @@ const watherTopHeaderLayout = css`
 const watherTopContents = css`
   margin-top: 40px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 8px;
   }
 `;
@@ -164,7 +164,7 @@ const contentsTemperature = css`
     color: ${colors.gray6};
   }
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: -30px;
   }
 `;
@@ -178,7 +178,7 @@ const contentsWeather = css`
   line-height: 42px;
   color: ${colors.gray5};
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 24px;
   }
 `;
@@ -189,7 +189,7 @@ const contentsSubTextBlock = css`
   place-items: center;
   margin-top: 88px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     row-gap: 32px;
     margin-top: 48px;
   }

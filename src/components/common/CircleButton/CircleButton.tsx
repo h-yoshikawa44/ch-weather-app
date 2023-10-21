@@ -2,7 +2,7 @@ import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
-import { createDarkenColor } from '@/libs/csx';
+import { createDarkenColor } from '@/lib/csx';
 
 type Color = 'light' | 'dark';
 type Props = Omit<ComponentPropsWithRef<'button'>, 'color'> & {
@@ -45,7 +45,7 @@ const circleButtonColor = (color: Color) => {
         background-color: ${createDarkenColor(colors.gray6, 0.15)};
       }
 
-      &:focus:not(.focus-visible) {
+      &:focus:not(:focus-visible) {
         outline-color: transparent;
       }
     `;
@@ -60,7 +60,7 @@ const circleButtonColor = (color: Color) => {
         background-color: ${createDarkenColor(colors.gray1, 0.15)};
       }
 
-      &:focus:not(.focus-visible) {
+      &:focus:not(:focus-visible) {
         outline-color: transparent;
       }
     `;
