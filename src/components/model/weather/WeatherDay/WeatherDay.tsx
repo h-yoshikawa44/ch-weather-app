@@ -47,10 +47,10 @@ const WeatherDayCard: FC<Props> = ({
       </h4>
       <p css={weatherDayImgBlock}>
         <Image
+          css={weatherDayImg}
           src={weatherIcons[weatherCode]}
           alt={weatherNames[weatherCode]}
-          layout="fill"
-          objectFit="contain"
+          fill
         />
       </p>
       <p css={weatherDayTempBlock}>
@@ -82,6 +82,10 @@ const weatherDayImgBlock = css`
   max-width: 100%;
   height: 80px;
   margin-top: 8px;
+`;
+
+const weatherDayImg = css`
+  object-fit: contain;
 `;
 
 const weatherDayTempBlock = css`

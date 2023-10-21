@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
@@ -61,10 +61,10 @@ const WeatherTop: FC<Props> = ({
           <p css={contentsImgBlock}>
             {weatherCode && (
               <Image
+                css={contentsImg}
                 src={weatherIcons[weatherCode]}
                 alt={weatherNames[weatherCode]}
-                layout="fill"
-                objectFit="contain"
+                fill
               />
             )}
           </p>
@@ -142,6 +142,10 @@ const contentsImgBlock = css`
   width: 60%;
   height: 240px;
   margin: 80px auto 0;
+`;
+
+const contentsImg = css`
+  object-fit: contain;
 `;
 
 const contentsTemperature = css`
