@@ -10,7 +10,7 @@ import { color } from 'csx';
 export const createDarkenColor = (
   colorValue: string,
   darkenValue: number | string = 0,
-  relative: boolean = false
+  relative: boolean = false,
 ): string => {
   return color(colorValue).darken(darkenValue, relative).toHexString();
 };

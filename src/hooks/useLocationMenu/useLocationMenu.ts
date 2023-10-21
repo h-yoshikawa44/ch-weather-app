@@ -52,7 +52,7 @@ const useLocationMenu = () => {
     (e: ChangeEvent<HTMLInputElement>) => {
       setQuery(e.target.value);
     },
-    []
+    [],
   );
 
   const handleSearchLocation = useCallback(
@@ -81,7 +81,7 @@ const useLocationMenu = () => {
           setIsLoading(false);
         });
     },
-    [query]
+    [query],
   );
 
   return {

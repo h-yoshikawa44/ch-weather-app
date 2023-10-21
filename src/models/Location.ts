@@ -5,7 +5,7 @@ const locationTypes = [
   'Continent',
 ] as const;
 
-export type LocationType = typeof locationTypes[number];
+export type LocationType = (typeof locationTypes)[number];
 
 export type Location = {
   title: string;

@@ -26,7 +26,7 @@ const Home: FC = () => {
   } = useWeatherSetting();
 
   const { isLoading, errorMessage, weather } = useWeather(
-    currentLocation?.woeId
+    currentLocation?.woeId,
   );
 
   const {

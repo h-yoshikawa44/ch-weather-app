@@ -103,7 +103,10 @@ const weatherLocationMenu = css`
   visibility: hidden;
   background-color: ${colors.blackLighten};
   opacity: 0;
-  transition: opacity 0.3s, visibility 0.3s ease 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s ease 0.3s,
+    transform 0.3s;
   transform: translateX(-100%);
 
   &::-webkit-scrollbar {

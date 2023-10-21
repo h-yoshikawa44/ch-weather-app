@@ -9,7 +9,7 @@ export type PathParams = {
 const getWeather = async (
   apiType: ApiType,
   woeId: number,
-  options?: Options
+  options?: Options,
 ) => {
   const mergedOptions = {
     ...getDefaultApiOptions(apiType),

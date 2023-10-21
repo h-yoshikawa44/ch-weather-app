@@ -42,7 +42,7 @@ const WeatherHumidity: FC<Props> = ({ humidity }) => {
 
 const weatherHumidityLayout = css`
   display: grid;
-  place-items: center; ;
+  place-items: center;
 `;
 
 const weatherHumidityTitle = css`

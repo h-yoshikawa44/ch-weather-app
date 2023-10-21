@@ -30,7 +30,7 @@ const isQueryParams = (params: unknown): params is QueryParams => {
 
 const getLocations = async (
   apiType: ApiType,
-  options?: Options & { searchParams?: QueryParams }
+  options?: Options & { searchParams?: QueryParams },
 ) => {
   const mergedOptions = {
     ...getDefaultApiOptions(apiType),
