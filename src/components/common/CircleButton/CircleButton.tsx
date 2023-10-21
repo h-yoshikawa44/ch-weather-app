@@ -1,8 +1,8 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { colors } from '@/styles/constants';
+import { darken } from 'polished';
+import { colorRatios, colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
-import { createDarkenColor } from '@/lib/csx';
 
 type Color = 'light' | 'dark';
 type Props = Omit<ComponentPropsWithRef<'button'>, 'color'> & {
@@ -41,8 +41,7 @@ const circleButtonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray6, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.gray6)};
       }
 
       &:focus:not(:focus-visible) {
@@ -56,8 +55,7 @@ const circleButtonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray1, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.gray1)};
       }
 
       &:focus:not(:focus-visible) {

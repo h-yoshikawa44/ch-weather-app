@@ -11,13 +11,13 @@ export const breakPoint = {
   md,
   lg,
   xl,
-};
+} as const;
 
 const menu = 1200;
 
 export const zIndex = {
   menu,
-};
+} as const;
 
 const black1 = '#100E1D';
 const black2 = '#110E3C';
@@ -58,4 +58,11 @@ export const colors = {
   barActive,
   placeHolder,
   border,
-};
+} as const;
+
+// 色の変化
+const buttonDarken = 0.15;
+
+export const colorRatios = {
+  buttonDarken,
+} as const;

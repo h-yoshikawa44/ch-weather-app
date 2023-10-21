@@ -1,8 +1,8 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { colors } from '@/styles/constants';
+import { darken } from 'polished';
+import { colorRatios, colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
-import { createDarkenColor } from '@/lib/csx';
 
 type Color = 'gray' | 'blue';
 
@@ -50,8 +50,7 @@ const buttonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray3, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.gray3)};
       }
     `;
   } else if (color === 'blue') {
@@ -61,8 +60,7 @@ const buttonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.blue, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.blue)};
       }
     `;
   }
