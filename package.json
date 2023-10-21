@@ -31,10 +31,7 @@
     "wicg-inert": "^3.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@emotion/babel-preset-css-prop": "^11.2.0",
     "@stylelint/postcss-css-in-js": "^0.37.2",
-    "@types/babel__core": "^7.1.18",
     "@types/eslint": "8.2.2",
     "@types/node": "^20.8.0",
     "@types/prettier": "^2.4.3",
