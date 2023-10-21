@@ -28,9 +28,10 @@ const Footer: FC<Props> = ({ ...props }) => {
 
 const footer = css`
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
 
   a {
     display: flex;
