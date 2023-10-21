@@ -69,8 +69,8 @@ The menu that opens from "Search for places" allows you to search for a location
 Base
 - [Node.js](https://nodejs.org/)：20.8.0
 - [TypeScript](https://www.typescriptlang.org/)：4.5.4
-- [React](https://reactjs.org/)：17.0.2
-- [Next.js](https://nextjs.org/)：12.0.7
+- [React](https://reactjs.org/)：18.2.0
+- [Next.js](https://nextjs.org/)：13.5.6
 
 Other major libraries
 - [emotion](https://emotion.sh/)
