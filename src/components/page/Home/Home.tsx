@@ -1,4 +1,4 @@
-import { VFC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { css } from '@emotion/react';
 import WeatherTop from '@/components/model/weather/WeatherTop';
 import WeatherDay from '@/components/model/weather/WeatherDay';
@@ -13,7 +13,7 @@ import useWeatherSetting from '@/hooks/useWeatherSetting';
 import useWeather from '@/hooks/useWeather';
 import useLocationMenu from '@/hooks/useLocationMenu';
 
-const Home: VFC = () => {
+const Home: FC = () => {
   const {
     isLoading: isLoadingSetting,
     errorMessage: errorMessageSetting,

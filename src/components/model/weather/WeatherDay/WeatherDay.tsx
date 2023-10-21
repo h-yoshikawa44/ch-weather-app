@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { WeatherCode, TemperatureType } from '@/models/Weather';
@@ -20,7 +20,7 @@ type Props = {
   mode: TemperatureType;
 };
 
-const WeatherDayCard: VFC<Props> = ({
+const WeatherDayCard: FC<Props> = ({
   date,
   isTomorrow = false,
   weatherCode,

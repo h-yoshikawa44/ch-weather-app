@@ -1,4 +1,4 @@
-import { VFC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
@@ -25,7 +25,7 @@ type Props = {
   handleInitialCurrentLocation: VoidFunction;
 };
 
-const WeatherTop: VFC<Props> = ({
+const WeatherTop: FC<Props> = ({
   today,
   weatherCode,
   temperature,

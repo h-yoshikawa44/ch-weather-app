@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import { Navigation } from '@emotion-icons/material-rounded/Navigation';
 import Card from '@/components/common/Card';
@@ -11,7 +11,7 @@ type Props = {
   compass?: WindDirectionCompass;
 };
 
-const WeatherWindStatus: VFC<Props> = ({ speed, compass }) => {
+const WeatherWindStatus: FC<Props> = ({ speed, compass }) => {
   return (
     <Card>
       <div css={weatherWindStatusLayout}>

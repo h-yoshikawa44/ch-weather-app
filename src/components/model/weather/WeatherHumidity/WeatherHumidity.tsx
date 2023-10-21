@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import Card from '@/components/common/Card';
 import { fonts, colors } from '@/styles/constants';
@@ -7,7 +7,7 @@ type Props = {
   humidity?: number;
 };
 
-const WeatherHumidity: VFC<Props> = ({ humidity }) => {
+const WeatherHumidity: FC<Props> = ({ humidity }) => {
   return (
     <Card>
       <div css={weatherHumidityLayout}>

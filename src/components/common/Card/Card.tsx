@@ -1,8 +1,12 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { colors } from '@/styles/constants';
 
-const Card: FC = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+const Card: FC<Props> = ({ children }) => {
   return <div css={card}>{children}</div>;
 };
 

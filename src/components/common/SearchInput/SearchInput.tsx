@@ -1,4 +1,4 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { Search } from '@emotion-icons/material-rounded/Search';
 import { fonts, colors } from '@/styles/constants';
@@ -7,7 +7,7 @@ type Props = Omit<ComponentPropsWithRef<'input'>, 'type'> & {
   fullWidth?: boolean;
 };
 
-const SearchInput: VFC<Props> = ({ fullWidth = false, ...props }) => {
+const SearchInput: FC<Props> = ({ fullWidth = false, ...props }) => {
   return (
     <div css={[searchInput, fullWidth && searchInputFullWidth]}>
       <Search css={searchInputIcon} size={20} />

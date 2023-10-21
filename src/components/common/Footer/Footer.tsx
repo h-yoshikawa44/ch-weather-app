@@ -1,11 +1,11 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { breakPoint, fonts, colors } from '@/styles/constants';
 
 type Props = ComponentPropsWithRef<'footer'>;
 
-const Footer: VFC<Props> = ({ ...props }) => {
+const Footer: FC<Props> = ({ ...props }) => {
   return (
     <footer css={[footer, footerText]} {...props}>
       <span>

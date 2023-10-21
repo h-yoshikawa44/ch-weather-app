@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import Card from '@/components/common/Card';
 import { fonts, colors } from '@/styles/constants';
@@ -18,7 +18,7 @@ type Props = {
   value?: number;
 };
 
-const WeatherHighlightCommon: VFC<Props> = ({ type, value }) => {
+const WeatherHighlightCommon: FC<Props> = ({ type, value }) => {
   let roundValue;
   if (value) {
     if (type === 'visibility') {

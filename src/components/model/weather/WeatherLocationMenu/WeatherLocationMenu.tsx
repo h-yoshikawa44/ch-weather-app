@@ -1,4 +1,4 @@
-import { VFC, ChangeEvent, FormEvent } from 'react';
+import { FC, ChangeEvent, FormEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { css } from '@emotion/react';
 import { Close } from '@emotion-icons/material-rounded/Close';
@@ -20,7 +20,7 @@ type Props = {
   handleSelectLocation: (location: Location) => void;
 };
 
-const WeatherLocationMenu: VFC<Props> = ({
+const WeatherLocationMenu: FC<Props> = ({
   open,
   query,
   isLoading,
