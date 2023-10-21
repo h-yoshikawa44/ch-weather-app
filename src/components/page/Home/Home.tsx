@@ -8,7 +8,8 @@ import WeatherHighlightCommon from '@/components/model/weather/WeatherHighlightC
 import WeatherLocationMenu from '@/components/model/weather/WeatherLocationMenu';
 import CircleButton from '@/components/common/CircleButton';
 import Footer from '@/components/common/Footer';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import useWeatherSetting from '@/hooks/useWeatherSetting';
 import useWeather from '@/hooks/useWeather';
 import useLocationMenu from '@/hooks/useLocationMenu';
@@ -188,7 +189,7 @@ const guideMessageBlock = css`
 `;
 
 const guideMessageText = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -269,7 +270,7 @@ const rightAreaHighlightSection = css`
 `;
 
 const rightAreaHighlightSectionTitle = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 24px;
   font-style: normal;
   font-weight: bold;

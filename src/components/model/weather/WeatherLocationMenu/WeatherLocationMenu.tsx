@@ -6,7 +6,8 @@ import { NavigateNext } from '@emotion-icons/material-rounded/NavigateNext';
 import SearchInput from '@/components/common/SearchInput';
 import Button from '@/components/common/Button';
 import { Location, Locations } from '@/models/Location';
-import { zIndex, colors, fonts, breakPoint } from '@/styles/constants';
+import { zIndex, colors, breakPoint } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 
 type Props = {
   open: boolean;
@@ -171,7 +172,7 @@ const weatherLocationMenuGuide = css`
 `;
 
 const weatherLocationMenuGuideMessage = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -198,7 +199,7 @@ const locationListItemButton = css`
   justify-content: space-between;
   width: 100%;
   padding: 24px 12px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

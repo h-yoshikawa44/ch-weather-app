@@ -7,7 +7,8 @@ import {
   weatherNames,
   temperatureUnits,
 } from '@/constants/weather';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import { dateFormat } from '@/utils/date';
 import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
@@ -66,7 +67,7 @@ const weatherDay = css`
 `;
 
 const weatherDayDate = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -87,7 +88,7 @@ const weatherDayTempBlock = css`
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

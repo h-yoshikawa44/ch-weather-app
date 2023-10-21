@@ -1,6 +1,7 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import { createDarkenColor } from '@/libs/csx';
 
 type Color = 'light' | 'dark';
@@ -21,7 +22,7 @@ const circleButton = css`
   align-items: center;
   justify-content: center;
   padding: 12px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 18px;
   font-style: normal;
   font-weight: bold;

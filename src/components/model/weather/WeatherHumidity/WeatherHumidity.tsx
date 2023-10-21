@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
 import Card from '@/components/common/Card';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 
 type Props = {
   humidity?: number;
@@ -45,7 +46,7 @@ const weatherHumidityLayout = css`
 `;
 
 const weatherHumidityTitle = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -55,7 +56,7 @@ const weatherHumidityTitle = css`
 
 const weatherHumidityValue = css`
   margin-top: 4px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 36px;
   font-style: normal;
   font-weight: 400;
@@ -78,7 +79,7 @@ const meterBlockLabel = css`
   display: flex;
   justify-content: space-between;
   margin-bottom: -8px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 12px;
   font-style: normal;
   font-weight: bold;
@@ -101,7 +102,7 @@ const meterBlockMeter = css`
 const meterBlockLabelPer = css`
   display: block;
   margin-top: -4px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 12px;
   font-style: normal;
   font-weight: bold;

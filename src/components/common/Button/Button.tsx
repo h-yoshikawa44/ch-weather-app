@@ -1,6 +1,7 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import { createDarkenColor } from '@/libs/csx';
 
 type Color = 'gray' | 'blue';
@@ -22,7 +23,7 @@ const button = css`
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

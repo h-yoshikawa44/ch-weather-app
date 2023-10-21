@@ -1,7 +1,8 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { montserrat } from '@/styles/fonts';
 
 type Props = ComponentPropsWithRef<'footer'>;
 
@@ -41,7 +42,7 @@ const footer = css`
 `;
 
 const footerText = css`
-  font-family: ${fonts.montserrat};
+  font-family: ${montserrat.style.fontFamily};
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;

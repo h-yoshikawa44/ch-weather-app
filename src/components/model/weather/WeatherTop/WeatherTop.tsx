@@ -11,7 +11,8 @@ import {
   weatherNames,
   temperatureUnits,
 } from '@/constants/weather';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import { dateFormat } from '@/utils/date';
 import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
@@ -145,7 +146,7 @@ const contentsImgBlock = css`
 
 const contentsTemperature = css`
   margin-top: 40px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 48px;
   font-style: normal;
   font-weight: 100;
@@ -166,7 +167,7 @@ const contentsTemperature = css`
 
 const contentsWeather = css`
   margin-top: 80px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 36px;
   font-style: normal;
   font-weight: 600;
@@ -192,7 +193,7 @@ const contentsSubTextBlock = css`
 
 const contentsDate = css`
   display: block;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -203,7 +204,7 @@ const contentsDate = css`
 const contentsLocation = css`
   display: flex;
   align-items: center;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 18px;
   font-style: normal;
   font-weight: 600;

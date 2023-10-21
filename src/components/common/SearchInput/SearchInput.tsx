@@ -1,7 +1,8 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { Search } from '@emotion-icons/material-rounded/Search';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 
 type Props = Omit<ComponentPropsWithRef<'input'>, 'type'> & {
   fullWidth?: boolean;
@@ -41,7 +42,7 @@ const searchInputIcon = css`
 `;
 
 const searchInputBase = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

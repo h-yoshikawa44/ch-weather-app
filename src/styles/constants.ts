@@ -19,14 +19,6 @@ export const zIndex = {
   menu,
 };
 
-const raleway = 'Raleway, sans-serif';
-const montserrat = 'Montserrat, sans-serif';
-
-export const fonts = {
-  raleway,
-  montserrat,
-};
-
 const black1 = '#100E1D';
 const black2 = '#110E3C';
 const blackLighten = '#1E213A';
