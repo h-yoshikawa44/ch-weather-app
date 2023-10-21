@@ -93,10 +93,7 @@ const WeatherLocationMenu: FC<Props> = ({
 
 const weatherLocationMenu = css`
   position: fixed;
-  top: 0;
-  right: 70%;
-  bottom: 0;
-  left: 0;
+  inset: 0 70% 0 0;
   z-index: ${zIndex.menu};
   padding: 12px 0;
   overflow-y: scroll;

@@ -252,12 +252,10 @@ const rightAreaWeekSection = css`
 const rightAreaWeekSectionLayout = css`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
-  row-gap: 16px;
-  column-gap: 3%;
+  gap: 16px 3%;
 
   @media (max-width: ${breakPoint.md - 1}px) {
-    row-gap: 32px;
-    column-gap: 8%;
+    gap: 32px 8%;
   }
 `;
 
