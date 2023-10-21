@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@emotion-icons/material-rounded": "^3.14.0",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "csx": "^10.0.2",
     "focus-visible": "^5.2.0",
     "ky": "^0.28.7",
