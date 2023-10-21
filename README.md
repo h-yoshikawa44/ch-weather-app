@@ -77,7 +77,7 @@ Other major libraries
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
 - [ky-universal](https://github.com/sindresorhus/ky-universal)
 - [csx](https://github.com/typestyle/csx)
-- [focus-visible](https://github.com/WICG/focus-visible)
+- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [wicg-inert](https://github.com/WICG/inert)
 
 API
