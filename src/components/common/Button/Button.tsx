@@ -1,7 +1,8 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { fonts, colors } from '@/styles/constants';
-import { createDarkenColor } from '@/libs/csx';
+import { darken } from 'polished';
+import { colorRatios, colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 
 type Color = 'gray' | 'blue';
 
@@ -22,7 +23,7 @@ const button = css`
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -36,7 +37,7 @@ const button = css`
     cursor: not-allowed;
   }
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     outline-color: transparent;
   }
 `;
@@ -49,8 +50,7 @@ const buttonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray3, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.gray3)};
       }
     `;
   } else if (color === 'blue') {
@@ -60,8 +60,7 @@ const buttonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.blue, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.blue)};
       }
     `;
   }

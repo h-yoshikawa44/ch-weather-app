@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { WeatherCode, TemperatureType } from '@/models/Weather';
@@ -7,7 +7,8 @@ import {
   weatherNames,
   temperatureUnits,
 } from '@/constants/weather';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import { dateFormat } from '@/utils/date';
 import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
@@ -20,7 +21,7 @@ type Props = {
   mode: TemperatureType;
 };
 
-const WeatherDayCard: VFC<Props> = ({
+const WeatherDayCard: FC<Props> = ({
   date,
   isTomorrow = false,
   weatherCode,
@@ -46,10 +47,10 @@ const WeatherDayCard: VFC<Props> = ({
       </h4>
       <p css={weatherDayImgBlock}>
         <Image
+          css={weatherDayImg}
           src={weatherIcons[weatherCode]}
           alt={weatherNames[weatherCode]}
-          layout="fill"
-          objectFit="contain"
+          fill
         />
       </p>
       <p css={weatherDayTempBlock}>
@@ -66,7 +67,7 @@ const weatherDay = css`
 `;
 
 const weatherDayDate = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -83,11 +84,15 @@ const weatherDayImgBlock = css`
   margin-top: 8px;
 `;
 
+const weatherDayImg = css`
+  object-fit: contain;
+`;
+
 const weatherDayTempBlock = css`
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

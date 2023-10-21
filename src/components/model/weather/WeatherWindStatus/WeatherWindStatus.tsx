@@ -1,17 +1,18 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import { Navigation } from '@emotion-icons/material-rounded/Navigation';
 import Card from '@/components/common/Card';
 import { WindDirectionCompass } from '@/models/Weather';
 import { windAngles } from '@/constants/weather';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 
 type Props = {
   speed?: number;
   compass?: WindDirectionCompass;
 };
 
-const WeatherWindStatus: VFC<Props> = ({ speed, compass }) => {
+const WeatherWindStatus: FC<Props> = ({ speed, compass }) => {
   return (
     <Card>
       <div css={weatherWindStatusLayout}>
@@ -39,7 +40,7 @@ const weatherWindStatusLayout = css`
 `;
 
 const weatherWindStatusTitle = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -49,7 +50,7 @@ const weatherWindStatusTitle = css`
 
 const weatherWindStatusSpeed = css`
   margin-top: 4px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 36px;
   font-style: normal;
   font-weight: 500;
@@ -87,7 +88,7 @@ const compassBlockIcon = (compass: WindDirectionCompass) => {
 
 const compassBlockValue = css`
   margin-left: 8px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

@@ -1,4 +1,4 @@
-import { VFC, ChangeEvent, FormEvent } from 'react';
+import { FC, ChangeEvent, FormEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { css } from '@emotion/react';
 import { Close } from '@emotion-icons/material-rounded/Close';
@@ -6,7 +6,8 @@ import { NavigateNext } from '@emotion-icons/material-rounded/NavigateNext';
 import SearchInput from '@/components/common/SearchInput';
 import Button from '@/components/common/Button';
 import { Location, Locations } from '@/models/Location';
-import { zIndex, colors, fonts, breakPoint } from '@/styles/constants';
+import { zIndex, colors, breakPoint } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 
 type Props = {
   open: boolean;
@@ -20,7 +21,7 @@ type Props = {
   handleSelectLocation: (location: Location) => void;
 };
 
-const WeatherLocationMenu: VFC<Props> = ({
+const WeatherLocationMenu: FC<Props> = ({
   open,
   query,
   isLoading,
@@ -92,17 +93,17 @@ const WeatherLocationMenu: VFC<Props> = ({
 
 const weatherLocationMenu = css`
   position: fixed;
-  top: 0;
-  right: 70%;
-  bottom: 0;
-  left: 0;
+  inset: 0 70% 0 0;
   z-index: ${zIndex.menu};
   padding: 12px 0;
   overflow-y: scroll;
   visibility: hidden;
   background-color: ${colors.blackLighten};
   opacity: 0;
-  transition: opacity 0.3s, visibility 0.3s ease 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s ease 0.3s,
+    transform 0.3s;
   transform: translateX(-100%);
 
   &::-webkit-scrollbar {
@@ -119,7 +120,7 @@ const weatherLocationMenu = css`
     border-radius: 100px;
   }
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     right: 0;
   }
 `;
@@ -144,7 +145,7 @@ const weatherLocationMenuCloseButton = css`
   background-color: transparent;
   border: none;
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     border-color: transparent;
   }
 `;
@@ -171,7 +172,7 @@ const weatherLocationMenuGuide = css`
 `;
 
 const weatherLocationMenuGuideMessage = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -198,7 +199,7 @@ const locationListItemButton = css`
   justify-content: space-between;
   width: 100%;
   padding: 24px 12px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -214,7 +215,7 @@ const locationListItemButton = css`
     border: 1px solid ${colors.border};
   }
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     outline-color: transparent;
   }
 `;

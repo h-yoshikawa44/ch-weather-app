@@ -26,6 +26,5 @@
   "[typescriptreact]": {
     "editor.formatOnSave": true
   },
-  "eslint.packageManager": "yarn",
   "stylelint.validate": ["css", "typescript", "typescriptreact"]
 }

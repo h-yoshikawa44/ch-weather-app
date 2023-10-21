@@ -1,4 +1,4 @@
-import { VFC, Fragment } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
@@ -11,7 +11,8 @@ import {
   weatherNames,
   temperatureUnits,
 } from '@/constants/weather';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import { dateFormat } from '@/utils/date';
 import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
@@ -25,7 +26,7 @@ type Props = {
   handleInitialCurrentLocation: VoidFunction;
 };
 
-const WeatherTop: VFC<Props> = ({
+const WeatherTop: FC<Props> = ({
   today,
   weatherCode,
   temperature,
@@ -60,10 +61,10 @@ const WeatherTop: VFC<Props> = ({
           <p css={contentsImgBlock}>
             {weatherCode && (
               <Image
+                css={contentsImg}
                 src={weatherIcons[weatherCode]}
                 alt={weatherNames[weatherCode]}
-                layout="fill"
-                objectFit="contain"
+                fill
               />
             )}
           </p>
@@ -95,7 +96,7 @@ const watherTop = css`
   padding: 40px 0;
   background-color: ${colors.bgLighten};
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     padding: 20px 0 104px;
   }
 `;
@@ -113,7 +114,7 @@ const watherTopHeaderLayout = css`
 const watherTopContents = css`
   margin-top: 40px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 8px;
   }
 `;
@@ -143,9 +144,13 @@ const contentsImgBlock = css`
   margin: 80px auto 0;
 `;
 
+const contentsImg = css`
+  object-fit: contain;
+`;
+
 const contentsTemperature = css`
   margin-top: 40px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 48px;
   font-style: normal;
   font-weight: 100;
@@ -159,21 +164,21 @@ const contentsTemperature = css`
     color: ${colors.gray6};
   }
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: -30px;
   }
 `;
 
 const contentsWeather = css`
   margin-top: 80px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 36px;
   font-style: normal;
   font-weight: 600;
   line-height: 42px;
   color: ${colors.gray5};
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 24px;
   }
 `;
@@ -184,7 +189,7 @@ const contentsSubTextBlock = css`
   place-items: center;
   margin-top: 88px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     row-gap: 32px;
     margin-top: 48px;
   }
@@ -192,7 +197,7 @@ const contentsSubTextBlock = css`
 
 const contentsDate = css`
   display: block;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -203,7 +208,7 @@ const contentsDate = css`
 const contentsLocation = css`
   display: flex;
   align-items: center;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 18px;
   font-style: normal;
   font-weight: 600;

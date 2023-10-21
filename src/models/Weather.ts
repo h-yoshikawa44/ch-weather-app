@@ -12,7 +12,7 @@ const weatherNames = [
   'Light Cloud',
   'Clear',
 ] as const;
-export type WeatherName = typeof weatherNames[number];
+export type WeatherName = (typeof weatherNames)[number];
 
 const weatherCodes = [
   'sn',
@@ -26,7 +26,7 @@ const weatherCodes = [
   'lc',
   'c',
 ] as const;
-export type WeatherCode = typeof weatherCodes[number];
+export type WeatherCode = (typeof weatherCodes)[number];
 
 export type TemperatureType = 'celsius' | 'fahrenheit';
 
@@ -48,7 +48,7 @@ const windDirectionCompasses = [
   'NW',
   'NNW',
 ] as const;
-export type WindDirectionCompass = typeof windDirectionCompasses[number];
+export type WindDirectionCompass = (typeof windDirectionCompasses)[number];
 
 export type ConsolidatedWeather = {
   id: number;

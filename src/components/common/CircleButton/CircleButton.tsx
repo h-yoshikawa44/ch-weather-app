@@ -1,7 +1,8 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { fonts, colors } from '@/styles/constants';
-import { createDarkenColor } from '@/libs/csx';
+import { darken } from 'polished';
+import { colorRatios, colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 
 type Color = 'light' | 'dark';
 type Props = Omit<ComponentPropsWithRef<'button'>, 'color'> & {
@@ -21,7 +22,7 @@ const circleButton = css`
   align-items: center;
   justify-content: center;
   padding: 12px;
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 18px;
   font-style: normal;
   font-weight: bold;
@@ -40,11 +41,10 @@ const circleButtonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray6, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.gray6)};
       }
 
-      &:focus:not(.focus-visible) {
+      &:focus:not(:focus-visible) {
         outline-color: transparent;
       }
     `;
@@ -55,11 +55,10 @@ const circleButtonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor(colors.gray1, 0.15)};
+        background-color: ${darken(colorRatios.buttonDarken, colors.gray1)};
       }
 
-      &:focus:not(.focus-visible) {
+      &:focus:not(:focus-visible) {
         outline-color: transparent;
       }
     `;

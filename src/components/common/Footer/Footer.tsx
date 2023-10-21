@@ -1,11 +1,12 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { montserrat } from '@/styles/fonts';
 
 type Props = ComponentPropsWithRef<'footer'>;
 
-const Footer: VFC<Props> = ({ ...props }) => {
+const Footer: FC<Props> = ({ ...props }) => {
   return (
     <footer css={[footer, footerText]} {...props}>
       <span>
@@ -28,9 +29,10 @@ const Footer: VFC<Props> = ({ ...props }) => {
 
 const footer = css`
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
 
   a {
     display: flex;
@@ -40,13 +42,13 @@ const footer = css`
 `;
 
 const footerText = css`
-  font-family: ${fonts.montserrat};
+  font-family: ${montserrat.style.fontFamily};
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
   color: ${colors.gray5};
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     flex-direction: column;
     justify-content: space-around;
     height: 70px;

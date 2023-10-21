@@ -1,4 +1,4 @@
-import { VFC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { css } from '@emotion/react';
 import WeatherTop from '@/components/model/weather/WeatherTop';
 import WeatherDay from '@/components/model/weather/WeatherDay';
@@ -8,12 +8,13 @@ import WeatherHighlightCommon from '@/components/model/weather/WeatherHighlightC
 import WeatherLocationMenu from '@/components/model/weather/WeatherLocationMenu';
 import CircleButton from '@/components/common/CircleButton';
 import Footer from '@/components/common/Footer';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { raleway } from '@/styles/fonts';
 import useWeatherSetting from '@/hooks/useWeatherSetting';
 import useWeather from '@/hooks/useWeather';
 import useLocationMenu from '@/hooks/useLocationMenu';
 
-const Home: VFC = () => {
+const Home: FC = () => {
   const {
     isLoading: isLoadingSetting,
     errorMessage: errorMessageSetting,
@@ -25,7 +26,7 @@ const Home: VFC = () => {
   } = useWeatherSetting();
 
   const { isLoading, errorMessage, weather } = useWeather(
-    currentLocation?.woeId
+    currentLocation?.woeId,
   );
 
   const {
@@ -188,7 +189,7 @@ const guideMessageBlock = css`
 `;
 
 const guideMessageText = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -203,7 +204,7 @@ const mainLayout = css`
     例 right が70%：30% 70%、right が0：100% */
   grid-template-columns: 30% 70%;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     grid-template-columns: 100%;
   }
 `;
@@ -227,7 +228,7 @@ const rightAreaContainer = css`
 const rightAreaHeader = css`
   margin-top: 42px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 24px;
   }
 `;
@@ -243,7 +244,7 @@ const rightAreaHeaderLayout = css`
 const rightAreaWeekSection = css`
   margin-top: 64px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 32px;
   }
 `;
@@ -251,25 +252,23 @@ const rightAreaWeekSection = css`
 const rightAreaWeekSectionLayout = css`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
-  row-gap: 16px;
-  column-gap: 3%;
+  gap: 16px 3%;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
-    row-gap: 32px;
-    column-gap: 8%;
+  @media (width < ${breakPoint.md}px) {
+    gap: 32px 8%;
   }
 `;
 
 const rightAreaHighlightSection = css`
   margin-top: 72px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-top: 48px;
   }
 `;
 
 const rightAreaHighlightSectionTitle = css`
-  font-family: ${fonts.raleway};
+  font-family: ${raleway.style.fontFamily};
   font-size: 24px;
   font-style: normal;
   font-weight: bold;
@@ -280,7 +279,7 @@ const rightAreaHighlightSectionTitle = css`
 const highlightSectionCardBlock = css`
   margin-top: 32px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     margin-bottom: 32px;
   }
 `;
@@ -290,7 +289,7 @@ const highlightSectionCardBlockLayout = css`
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 48px;
 
-  @media (max-width: ${breakPoint.md - 1}px) {
+  @media (width < ${breakPoint.md}px) {
     grid-template-columns: 100%;
     gap: 32px;
   }

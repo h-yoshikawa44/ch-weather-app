@@ -67,17 +67,17 @@ The menu that opens from "Search for places" allows you to search for a location
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 Base
-- [Node.js](https://nodejs.org/)：14.18.2
-- [TypeScript](https://www.typescriptlang.org/)：4.5.4
-- [React](https://reactjs.org/)：17.0.2
-- [Next.js](https://nextjs.org/)：12.0.7
+- [Node.js](https://nodejs.org/)：20.8.0
+- [TypeScript](https://www.typescriptlang.org/)：5.2.2
+- [React](https://reactjs.org/)：18.2.0
+- [Next.js](https://nextjs.org/)：13.5.6
 
 Other major libraries
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
 - [ky-universal](https://github.com/sindresorhus/ky-universal)
-- [csx](https://github.com/typestyle/csx)
-- [focus-visible](https://github.com/WICG/focus-visible)
+- [polished](https://polished.js.org/)
+- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [wicg-inert](https://github.com/WICG/inert)
 
 API
@@ -106,19 +106,19 @@ This application/site was created as a submission to a [DevChallenges](https://l
 
 <!-- Example: -->
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [yarn](https://yarnpkg.com/)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/h-yoshikawa44/ch-weather-app.git
+git clone https://github.com/h-yoshikawa44/ch-weather-app.git
 or
-$ git clone git@github.com:h-yoshikawa44/ch-weather-app.git
+git clone git@github.com:h-yoshikawa44/ch-weather-app.git
 
 # Install dependencies
-$ yarn install
+npm install
 
 # Run the app
-$ yarn start
+npm run start
 ```
 
 ## learned/improved
