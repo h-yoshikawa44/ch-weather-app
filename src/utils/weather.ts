@@ -9,3 +9,12 @@ export const convertCelsiusToFahrenheit = (celsius: number) => {
 
   return Math.round((c * 9) / 5 + 32);
 };
+
+/**
+ * メートル/秒をマイル/時に変換
+ * @param mps メートル/秒
+ * @returns マイル/時
+ */
+export const convertMpsToMph = (mps: number) => {
+  return mps * 2.237;
+};
