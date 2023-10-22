@@ -21,7 +21,8 @@ export type LocationResponse = {
 };
 
 /**
- * 外部 API の方のレスポンスモデル
+ * Geocoding API（外部 API） のレスポンスモデル
+ * ref: https://openweathermap.org/api/geocoding-api
  */
 export type LocationsResponse = LocationResponse[];
 

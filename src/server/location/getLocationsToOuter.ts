@@ -11,10 +11,11 @@ export type QueryParams = {
   q: string;
   /**
    * 取得する都市の数（最大5つ）
+   * （値は number であるが、クエリなので string）
    *
    * 外部 API としては任意パラメータであるが、指定を強制したいので必須にしている
    */
-  limit: number;
+  limit: string;
 };
 
 export const isQueryParams = (query: unknown): query is QueryParams => {
