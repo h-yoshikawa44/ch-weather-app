@@ -17,8 +17,7 @@ import useLocationMenu from '@/hooks/useLocationMenu';
 const Home: FC = () => {
   const {
     isLoading: isLoadingSetting,
-    errorMessage: errorMessageSetting,
-    currentLocation,
+    currentGeoLocation,
     temperatureMode,
     handleInitialCurrentLocation,
     handleSelectLocation,
