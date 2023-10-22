@@ -4,9 +4,8 @@ import {
   getCurrentWeatherToOuter,
 } from './getCurrentWeatherToOuter';
 import { createCurrentWeatherViewModel } from './createCurrentWeatherViewModel';
-import { WeatherType } from './Weather';
 
-export type { CurrentWeatherQuery, WeatherType };
+export type { CurrentWeatherQuery };
 export {
   isCurrentWeatherQuery,
   getCurrentWeatherToOuter,

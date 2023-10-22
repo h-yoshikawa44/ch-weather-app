@@ -1,5 +1,3 @@
-import { LocationType, locationTypes } from './Location';
-
 const weatherNames = [
   'Snow',
   'Sleet',
@@ -147,3 +145,51 @@ const isWeather = (args: unknown): args is Weather => {
 };
 
 export { isConsolidatedWeather, isSource, isWeather };
+
+const direction = [
+  'N',
+  'NNE',
+  'NE',
+  'ENE',
+  'E',
+  'ESE',
+  'SE',
+  'SSE',
+  'S',
+  'SSW',
+  'SW',
+  'WSW',
+  'W',
+  'WNW',
+  'NW',
+  'NNW',
+] as const;
+export type Direction = (typeof direction)[number];
+
+export type CurrentWeather = {
+  city: string;
+  weatherIcon: string;
+  weatherName: string;
+  temp: number;
+  windSpeed: number;
+  windDeg: number;
+  humidity: number;
+  visibility: number;
+  airPressure: number;
+};
+
+export const isCurrentWeather = (arg: unknown): arg is CurrentWeather => {
+  const cw = arg as CurrentWeather;
+
+  return (
+    typeof cw.city === 'string' &&
+    typeof cw.weatherIcon === 'string' &&
+    typeof cw.weatherName === 'string' &&
+    typeof cw.temp === 'number' &&
+    typeof cw.windSpeed === 'number' &&
+    typeof cw.windDeg === 'number' &&
+    typeof cw.humidity === 'number' &&
+    typeof cw.visibility === 'number' &&
+    typeof cw.airPressure === 'number'
+  );
+};
