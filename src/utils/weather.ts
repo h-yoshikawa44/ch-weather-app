@@ -78,3 +78,11 @@ export const convertDegToDirection = (deg: number) => {
       return 'NNW';
   }
 };
+/**
+ * キロメートルをマイルに変換
+ * @param km キロメートル
+ * @returns マイル
+ */
+export const convertKmToMile = (km: number) => {
+  return km / 1.609;
+};
