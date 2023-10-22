@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { HTTPError } from 'ky-universal';
 import {
   getCurrentWeatherToOuter,
-  QueryParams,
-  isQueryParams,
+  CurrentWeatherQuery,
+  isCurrentWeatherQuery,
 } from '@/server/weather';
 
 /**
@@ -24,12 +24,12 @@ export default async function handler(
     case 'GET':
       // 不正なクエリパラメータの時は403を返す
       const queryParams = req.query as unknown;
-      if (!isQueryParams(queryParams)) {
+      if (!isCurrentWeatherQuery(queryParams)) {
         res.status(403).send('Invalid query parameter.');
       }
 
       await getCurrentWeatherToOuter({
-        searchParams: queryParams as QueryParams,
+        searchParams: queryParams as CurrentWeatherQuery,
       })
         .then((data) => {
           res.status(200).json(data);

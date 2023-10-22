@@ -4,7 +4,7 @@ import { isCurrentWeatherResponse } from './Weather';
 
 const units = ['standard', 'metric', 'imperial'] as const;
 
-export type QueryParams = {
+export type CurrentWeatherQuery = {
   /** 緯度 （値は number であるが、クエリなので string） */
   lat: string;
   /** 経度 （値は number であるが、クエリなので string）*/
@@ -13,8 +13,10 @@ export type QueryParams = {
   units?: (typeof units)[number];
 };
 
-export const isQueryParams = (query: unknown): query is QueryParams => {
-  const q = query as QueryParams;
+export const isCurrentWeatherQuery = (
+  query: unknown,
+): query is CurrentWeatherQuery => {
+  const q = query as CurrentWeatherQuery;
 
   return (
     typeof q.lat === 'string' &&
@@ -24,7 +26,7 @@ export const isQueryParams = (query: unknown): query is QueryParams => {
 };
 
 export const getCurrentWeatherToOuter = async (
-  options: Options & { searchParams: QueryParams },
+  options: Options & { searchParams: CurrentWeatherQuery },
 ) => {
   const response = await getExtendKy('outer', options).get('data/2.5/weather');
   const locations = (await response.json()) as unknown[];

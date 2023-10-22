@@ -1,8 +1,14 @@
 import {
+  CurrentWeatherQuery,
+  isCurrentWeatherQuery,
   getCurrentWeatherToOuter,
-  QueryParams,
-  isQueryParams,
 } from './getCurrentWeatherToOuter';
+import { createCurrentWeatherViewModel } from './createCurrentWeatherViewModel';
+import { WeatherType } from './Weather';
 
-export type { QueryParams };
-export { getCurrentWeatherToOuter, isQueryParams };
+export type { CurrentWeatherQuery, WeatherType };
+export {
+  isCurrentWeatherQuery,
+  getCurrentWeatherToOuter,
+  createCurrentWeatherViewModel,
+};

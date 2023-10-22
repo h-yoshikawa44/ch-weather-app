@@ -2,7 +2,7 @@ import { Options } from 'ky-universal';
 import { getExtendKy } from '@/config/ky';
 import { isLocationsResponse } from './Location';
 
-export type QueryParams = {
+export type LocationsQuery = {
   /**
    * 都市名、州コード (米国のみ)、および国コードをカンマで区切ったもの。 ISO 3166 国コード
    * - {city name}
@@ -18,8 +18,8 @@ export type QueryParams = {
   limit: string;
 };
 
-export const isQueryParams = (query: unknown): query is QueryParams => {
-  const q = query as QueryParams;
+export const isLocationsQuery = (query: unknown): query is LocationsQuery => {
+  const q = query as LocationsQuery;
   const qRegex = new RegExp(/^[a-zA-Z]+$/);
 
   return (
@@ -28,7 +28,7 @@ export const isQueryParams = (query: unknown): query is QueryParams => {
 };
 
 export const getLocationsToOuter = async (
-  options: Options & { searchParams: QueryParams },
+  options: Options & { searchParams: LocationsQuery },
 ) => {
   const response = await getExtendKy('outer', options).get('geo/1.0/direct');
   const locations = (await response.json()) as unknown[];
