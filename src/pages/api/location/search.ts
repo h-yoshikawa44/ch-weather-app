@@ -1,16 +1,17 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from 'next';
 import { HTTPError } from 'ky-universal';
-import getLocations, {
+import {
+  getLocationsToOuter,
   QueryParams,
   isQueryParams,
-} from '@/domains/getLocations';
+} from '@/server/location';
 
 /**
  * ロケーション検索 API
- * クエリパラメータ（どちらかは必須）
- * - query: string - 検索ワード
- * - lattlong: string（書式：小数,小数）- 緯度経度
+ *
+ * クエリパラメータ（q は必須）
+ * - q: string - 都市名、州コード (米国のみ)、および国コードをカンマで区切ったもの。 ISO 3166 国コード
+ * - limit: number - 取得する都市の数（最大5つ）
  * @param {NextApiRequest} req リクエストミドルウェア
  * @param {NextApiResponse} res レスポンスヘルパー
  */
@@ -26,7 +27,7 @@ export default async function handler(
         res.status(403).send('Invalid query parameter.');
       }
 
-      getLocations('outer', {
+      await getLocationsToOuter({
         searchParams: queryParams as QueryParams,
       })
         .then((data) => {
