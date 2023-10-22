@@ -4,6 +4,7 @@ import {
   getLocationsToOuter,
   QueryParams,
   isQueryParams,
+  createLocationsViewModel,
 } from '@/server/location';
 
 /**
@@ -31,7 +32,7 @@ export default async function handler(
         searchParams: queryParams as QueryParams,
       })
         .then((data) => {
-          res.status(200).json(data);
+          res.status(200).json(createLocationsViewModel(data));
         })
         .catch((err) => {
           if (err instanceof HTTPError) {

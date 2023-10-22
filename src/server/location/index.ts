@@ -3,6 +3,7 @@ import {
   QueryParams,
   isQueryParams,
 } from './getLocationsToOuter';
+import { createLocationsViewModel } from './createLocationsViewModel';
 
 export type { QueryParams };
-export { getLocationsToOuter, isQueryParams };
+export { getLocationsToOuter, isQueryParams, createLocationsViewModel };

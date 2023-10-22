@@ -66,7 +66,7 @@ const WeatherLocationMenu: FC<Props> = ({
         )}
         <ul css={weatherLocationMenuLocationList}>
           {locations?.map((location) => (
-            <li key={`${location.woeid}`}>
+            <li key={`${location.country} - ${location.name}`}>
               <button
                 css={locationListItemButton}
                 onClick={() => {
@@ -74,7 +74,9 @@ const WeatherLocationMenu: FC<Props> = ({
                   handleLocationMenuClose();
                 }}
               >
-                <span css={locationListItemButtonText}>{location.title}</span>
+                <span
+                  css={locationListItemButtonText}
+                >{`${location.country} - ${location.name}`}</span>
                 <NavigateNext size={24} />
               </button>
             </li>

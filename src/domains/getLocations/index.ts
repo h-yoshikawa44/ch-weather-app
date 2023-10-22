@@ -1,5 +1,3 @@
-import getLocations, { QueryParams, isQueryParams } from './getLocations';
+import getLocations from './getLocations';
 
 export default getLocations;
-export type { QueryParams };
-export { isQueryParams };
