@@ -103,15 +103,35 @@ type Weather = {
 };
 
 type Main = {
-  /** 気温 （単位はクエリで指定したもの） */
+  /**
+   * 気温（単位はクエリで指定したもの）
+   * - default: kelvin
+   * - metric: celsius
+   * - inperial: fahrenheit
+   */
   temp: number;
-  /** 体感気温 （単位はクエリで指定したもの） */
+  /**
+   * 体感気温 （単位はクエリで指定したもの）
+   * - default: kelvin
+   * - metric: celsius
+   * - inperial: fahrenheit
+   */
   feels_like: number;
-  /** 現時点の最低気温 （単位はクエリで指定したもの） */
+  /**
+   * 現時点の最低気温 （単位はクエリで指定したもの）
+   * - default: kelvin
+   * - metric: celsius
+   * - inperial: fahrenheit
+   * */
   temp_min: number;
-  /** 現時点の最高気温 （単位はクエリで指定したもの）*/
+  /**
+   * 現時点の最高気温 （単位はクエリで指定したもの）
+   * - default: kelvin
+   * - metric: celsius
+   * - inperial: fahrenheit
+   */
   temp_max: number;
-  /** 海面上の大気圧 hPa */
+  /** 海面上の大気圧 hPa（旧 mb） */
   pressure: number;
   /** 湿度 % */
   humidity: number;
@@ -123,11 +143,21 @@ type Clouds = {
 };
 
 type Wind = {
-  /** 風速 （単位はクエリで指定したもの） */
+  /**
+   * 風速 （単位はクエリで指定したもの）
+   * - default: meter/sec
+   * - metric: meter/sec
+   * - inperial: miles/hour
+   * */
   speed: number;
   /** 風向 角度 */
   deg: number;
-  /** 突風 （単位はクエリで指定したもの） */
+  /**
+   * 突風 （単位はクエリで指定したもの）
+   * - default: meter/sec
+   * - metric: meter/sec
+   * - inperial: miles/hour
+   * */
   gust?: number;
 };
 
