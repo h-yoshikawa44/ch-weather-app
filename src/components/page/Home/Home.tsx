@@ -25,7 +25,8 @@ const Home: FC = () => {
   } = useWeatherSetting();
 
   const { isLoading, errorMessage, weather } = useWeather(
-    currentLocation?.woeId,
+    currentGeoLocation?.lat,
+    currentGeoLocation?.lon,
   );
 
   const {
@@ -63,8 +64,9 @@ const Home: FC = () => {
     );
   }
 
-  const today = weather?.consolidated_weather[0];
-  const week = weather?.consolidated_weather.slice(1);
+  const today = new Date(Date.now()).toLocaleDateString();
+  // TODO 後で正式なものにする
+  const week = [];
 
   return (
     <Fragment>
@@ -78,10 +80,11 @@ const Home: FC = () => {
           }
         >
           <WeatherTop
-            today={today?.applicable_date}
-            weatherCode={today?.weather_state_abbr}
-            temperature={today?.the_temp}
-            location={weather?.title}
+            today={today}
+            weatherIconSrc={weather?.weatherIcon}
+            weatherName={weather?.weatherName}
+            temperature={weather?.temp}
+            location={weather?.city}
             mode={temperatureMode}
             handleLocationMenuOpen={handleLocationMenuOpen}
             handleInitialCurrentLocation={handleInitialCurrentLocation}
@@ -140,17 +143,17 @@ const Home: FC = () => {
                 <div css={highlightSectionCardBlock}>
                   <div css={highlightSectionCardBlockLayout}>
                     <WeatherWindStatus
-                      speed={today?.wind_speed}
-                      compass={today?.wind_direction_compass}
+                      speed={weather?.windSpeed}
+                      deg={weather?.windDeg}
                     />
-                    <WeatherHumidity humidity={today?.humidity} />
+                    <WeatherHumidity humidity={weather?.humidity} />
                     <WeatherHighlightCommon
                       type="visibility"
-                      value={today?.visibility}
+                      value={weather?.visibility}
                     />
                     <WeatherHighlightCommon
                       type="airPressure"
-                      value={today?.air_pressure}
+                      value={weather?.airPressure}
                     />
                   </div>
                 </div>

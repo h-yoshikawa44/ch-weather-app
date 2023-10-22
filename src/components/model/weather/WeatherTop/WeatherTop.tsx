@@ -18,7 +18,8 @@ import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
 type Props = {
   today?: string;
-  weatherCode?: WeatherCode;
+  weatherIconSrc?: string;
+  weatherName?: string;
   temperature?: number;
   location?: string;
   mode: TemperatureType;
@@ -28,7 +29,8 @@ type Props = {
 
 const WeatherTop: FC<Props> = ({
   today,
-  weatherCode,
+  weatherIconSrc,
+  weatherName,
   temperature,
   location,
   mode,
@@ -59,11 +61,11 @@ const WeatherTop: FC<Props> = ({
       <div css={[watherTopContents, watherTopContentLayout]}>
         <div css={contentsBgImgBlock}>
           <p css={contentsImgBlock}>
-            {weatherCode && (
+            {weatherIconSrc && weatherName && (
               <Image
                 css={contentsImg}
-                src={weatherIcons[weatherCode]}
-                alt={weatherNames[weatherCode]}
+                src={weatherIconSrc}
+                alt={weatherName}
                 fill
               />
             )}
@@ -73,9 +75,7 @@ const WeatherTop: FC<Props> = ({
           <em>{roundTemp}</em>
           {temperatureUnits[mode]}
         </p>
-        <p css={contentsWeather}>
-          {weatherCode ? weatherNames[weatherCode] : '-'}
-        </p>
+        <p css={contentsWeather}>{weatherName ? weatherName : '-'}</p>
         <div css={contentsSubTextBlock}>
           <small css={contentsDate}>
             Today -{' '}

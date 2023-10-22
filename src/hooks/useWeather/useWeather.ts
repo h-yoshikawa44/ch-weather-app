@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react';
 import { HTTPError } from 'ky-universal';
-import { Weather } from '@/models/Weather';
-import getWeather from '@/domains/getWeather';
+import { CurrentWeather } from '@/models/Weather';
+import { getCurrentWeather } from '@/domains/getCurrentWeather';
 
 const httpErrorMessageText =
   'Sorry, Failed to retrieve weather forecast information. Please take some time and try again.';
 const errorMessageText = 'Unexpected data was retrieved.';
 
-const useWeather = (woeId?: number) => {
+const useWeather = (lat?: number, lon?: number) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [weather, setWeather] = useState<Weather>();
+  const [weather, setWeather] = useState<CurrentWeather>();
 
   useEffect(() => {
-    if (!woeId) {
+    if (!lat || !lon) {
       return;
     }
     setIsLoading(true);
-    getWeather('inner', woeId)
+
+    getCurrentWeather({ searchParams: { lat, lon, units: 'metric' } })
       .then((data) => {
         setWeather(data);
         setErrorMessage('');
@@ -32,7 +33,7 @@ const useWeather = (woeId?: number) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [woeId]);
+  }, [lat, lon]);
 
   return { isLoading, errorMessage, weather };
 };

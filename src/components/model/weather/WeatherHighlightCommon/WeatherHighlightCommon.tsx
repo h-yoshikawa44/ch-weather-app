@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import Card from '@/components/common/Card';
 import { colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
+import { convertKmToMile } from '@/utils/weather';
 
 const title = {
   visibility: 'Visibility',
@@ -23,7 +24,7 @@ const WeatherHighlightCommon: FC<Props> = ({ type, value }) => {
   let roundValue;
   if (value) {
     if (type === 'visibility') {
-      roundValue = Math.round(value * 10) / 10;
+      roundValue = Math.round(convertKmToMile(value)) / 10;
     } else if (type === 'airPressure') {
       roundValue = Math.round(value);
     }
