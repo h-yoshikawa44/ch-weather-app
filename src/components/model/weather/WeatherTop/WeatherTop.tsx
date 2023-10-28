@@ -5,12 +5,8 @@ import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
 import { Place } from '@emotion-icons/material-rounded/Place';
 import Button from '@/components/common/Button';
 import CircleButton from '@/components/common/CircleButton';
-import { WeatherCode, TemperatureType } from '@/models/Weather';
-import {
-  weatherIcons,
-  weatherNames,
-  temperatureUnits,
-} from '@/constants/weather';
+import { TemperatureType } from '@/models/Weather';
+import { temperatureUnits } from '@/constants/weather';
 import { breakPoint, colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
 import { dateFormat } from '@/utils/date';
