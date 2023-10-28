@@ -66,7 +66,7 @@ const WeatherLocationMenu: FC<Props> = ({
         )}
         <ul css={weatherLocationMenuLocationList}>
           {locations?.map((location) => (
-            <li key={`${location.country} - ${location.name}`}>
+            <li key={`${location.lat} - ${location.lon}`}>
               <button
                 css={locationListItemButton}
                 onClick={() => {
