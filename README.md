@@ -114,6 +114,9 @@ git clone https://github.com/h-yoshikawa44/ch-weather-app.git
 or
 git clone git@github.com:h-yoshikawa44/ch-weather-app.git
 
+# Setting Env(Set each value according to your environment.)
+cp .env.example .env
+
 # Install dependencies
 npm install
 
