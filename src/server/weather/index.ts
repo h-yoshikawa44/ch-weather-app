@@ -9,6 +9,7 @@ import {
   getForecastWeatherToOuter,
 } from './getForecastWeatherToOuter';
 import { createCurrentWeatherViewModel } from './createCurrentWeatherViewModel';
+import { creatForecastWeatherViewModel } from './createForecastWeatherViewmodel';
 
 export type { CurrentWeatherQuery, ForecastWeatherQuery };
 export {
@@ -17,4 +18,5 @@ export {
   createCurrentWeatherViewModel,
   isForecastWeatherQuery,
   getForecastWeatherToOuter,
+  creatForecastWeatherViewModel,
 };

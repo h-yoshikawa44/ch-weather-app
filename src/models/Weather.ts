@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs';
+
 const weatherNames = [
   'Snow',
   'Sleet',
@@ -192,4 +194,32 @@ export const isCurrentWeather = (arg: unknown): arg is CurrentWeather => {
     typeof cw.visibility === 'number' &&
     typeof cw.airPressure === 'number'
   );
+};
+
+export type DayWeather = {
+  date: string;
+  weatherIcon: string;
+  weatherName: string;
+  maxTemp: number;
+  minTemp: number;
+};
+
+export type ForecastWeather = DayWeather[];
+
+const isDayWeather = (args: unknown): args is DayWeather => {
+  const dw = args as DayWeather;
+
+  return (
+    typeof dw.date === 'string' &&
+    typeof dw.weatherIcon === 'string' &&
+    typeof dw.weatherName === 'string' &&
+    typeof dw.maxTemp === 'number' &&
+    typeof dw.minTemp === 'number'
+  );
+};
+
+export const isForecastWeather = (arg: unknown): arg is ForecastWeather => {
+  const fw = arg as ForecastWeather;
+
+  return fw.every((dw) => isDayWeather(dw));
 };

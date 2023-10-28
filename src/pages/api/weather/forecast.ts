@@ -4,6 +4,7 @@ import {
   getForecastWeatherToOuter,
   ForecastWeatherQuery,
   isForecastWeatherQuery,
+  creatForecastWeatherViewModel,
 } from '@/server/weather';
 
 /**
@@ -32,7 +33,7 @@ export default async function handler(
         searchParams: queryParams as ForecastWeatherQuery,
       })
         .then((data) => {
-          res.status(200).json(data);
+          res.status(200).json(creatForecastWeatherViewModel(data));
         })
         .catch((err) => {
           if (err instanceof HTTPError) {
