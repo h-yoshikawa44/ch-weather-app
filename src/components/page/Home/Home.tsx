@@ -24,7 +24,7 @@ const Home: FC = () => {
     handleSwitchTemperatureMode,
   } = useWeatherSetting();
 
-  const { isLoading, errorMessage, weather } = useWeather(
+  const { isLoading, errorMessage, weather, forecastWeather } = useWeather(
     currentGeoLocation?.lat,
     currentGeoLocation?.lon,
   );
@@ -52,21 +52,17 @@ const Home: FC = () => {
     );
   }
 
-  if (errorMessageSetting || errorMessage) {
+  if (errorMessage) {
     return (
       <main css={darkBgColor}>
         <p css={guideMessageBlock}>
-          <small css={guideMessageText}>
-            {errorMessageSetting ? errorMessageSetting : errorMessage}
-          </small>
+          <small css={guideMessageText}>{errorMessage}</small>
         </p>
       </main>
     );
   }
 
   const today = new Date(Date.now()).toLocaleDateString();
-  // TODO 後で正式なものにする
-  const week = [];
 
   return (
     <Fragment>
@@ -123,14 +119,15 @@ const Home: FC = () => {
               </header>
               <section css={rightAreaWeekSection}>
                 <div css={rightAreaWeekSectionLayout}>
-                  {week?.map((day, index) => (
+                  {forecastWeather?.map((day, index) => (
                     <WeatherDay
-                      key={day.applicable_date}
-                      date={day.applicable_date}
+                      key={day.date}
+                      date={day.date}
                       isTomorrow={index === 0}
-                      weatherCode={day.weather_state_abbr}
-                      minTemp={day.min_temp}
-                      maxTemp={day.max_temp}
+                      weatherIconSrc={day.weatherIcon}
+                      weatherName={day.weatherName}
+                      minTemp={day.minTemp}
+                      maxTemp={day.maxTemp}
                       mode={temperatureMode}
                     />
                   ))}

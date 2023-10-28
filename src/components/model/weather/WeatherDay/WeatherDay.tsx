@@ -1,12 +1,8 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { WeatherCode, TemperatureType } from '@/models/Weather';
-import {
-  weatherIcons,
-  weatherNames,
-  temperatureUnits,
-} from '@/constants/weather';
+import { TemperatureType } from '@/models/Weather';
+import { temperatureUnits } from '@/constants/weather';
 import { colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
 import { dateFormat } from '@/utils/date';
@@ -15,7 +11,8 @@ import { convertCelsiusToFahrenheit } from '@/utils/weather';
 type Props = {
   date: string;
   isTomorrow?: boolean;
-  weatherCode: WeatherCode;
+  weatherIconSrc: string;
+  weatherName: string;
   minTemp: number;
   maxTemp: number;
   mode: TemperatureType;
@@ -24,7 +21,8 @@ type Props = {
 const WeatherDayCard: FC<Props> = ({
   date,
   isTomorrow = false,
-  weatherCode,
+  weatherIconSrc,
+  weatherName,
   minTemp,
   maxTemp,
   mode,
@@ -41,15 +39,15 @@ const WeatherDayCard: FC<Props> = ({
   return (
     <div css={weatherDay}>
       <h4 css={weatherDayDate}>
-        <time dateTime={date}>
+        <time dateTime={date.toLocaleString()}>
           {isTomorrow ? 'Tomorrow' : dateFormat(date)}
         </time>
       </h4>
       <p css={weatherDayImgBlock}>
         <Image
           css={weatherDayImg}
-          src={weatherIcons[weatherCode]}
-          alt={weatherNames[weatherCode]}
+          src={weatherIconSrc}
+          alt={weatherName}
           fill
         />
       </p>
