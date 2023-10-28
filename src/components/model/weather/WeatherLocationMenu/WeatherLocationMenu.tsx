@@ -88,7 +88,7 @@ const WeatherLocationMenu: FC<Props> = ({
   );
 
   // クライアント側の処理になるので、Next.js でのサーバ側ではポータルを使わないようにする
-  if (!process.browser) {
+  if (typeof window === 'undefined') {
     return dom;
   }
   return createPortal(dom, document.body);
