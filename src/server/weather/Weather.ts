@@ -1,3 +1,10 @@
+type Coord = {
+  /** 経度 */
+  lon: number;
+  /** 緯度 */
+  lat: number;
+};
+
 type WeatherIdThunderstorm =
   | 200
   | 201
@@ -133,6 +140,10 @@ type Main = {
   temp_max: number;
   /** 海面上の大気圧 hPa（旧 mb） */
   pressure: number;
+  /** 海面上の大気圧、hPa */
+  sea_level?: number;
+  /** 地上の大気圧、hPa */
+  grnd_level?: number;
   /** 湿度 % */
   humidity: number;
 };
@@ -168,17 +179,20 @@ type Rain = {
   '3h'?: number;
 };
 
+type Snow = {
+  /** 過去1時間の雪量 mm */
+  '1h'?: number;
+  /** 過去3時間の雪量 mm */
+  '3h'?: number;
+};
+
 /**
  * Current weather data API（外部 API） のレスポンスモデル
  * ref: https://openweathermap.org/current
  */
 export type CurrentWeatherResponse = {
-  coord: {
-    /** 経度 */
-    lon: number;
-    /** 緯度 */
-    lat: number;
-  };
+  /** 地理情報 */
+  coord: Coord;
   /** 気象情報（配列の最初のものがプライマリ） */
   weather: Weather[];
   /** 気象の数値情報 */
@@ -189,6 +203,8 @@ export type CurrentWeatherResponse = {
   wind: Wind;
   /** 降雨量情報 */
   rain?: Rain;
+  /** 降雪量情報 */
+  snow?: Snow;
   /** 雲情報 */
   clouds: Clouds;
   /** データ計算時刻 UNIX UTC */
@@ -226,4 +242,82 @@ export const isCurrentWeatherResponse = (
     typeof w.wind.speed === 'number' &&
     typeof w.wind.deg === 'number'
   );
+};
+
+type City = {
+  /** 都市 ID */
+  id: number;
+  /** 都市名 */
+  name: string;
+  /** 地理情報 */
+  coord: Coord;
+  /** 国コード */
+  country: string;
+  /** 都市人口 */
+  population: number;
+  /** UTC からの秒単位のシフト */
+  timezone: number;
+  /** 日の出時間、Unix、UTC */
+  sunrise: number;
+  /** 日没時間、Unix、UTC */
+  sunset: number;
+};
+
+type ForecastWeather = {
+  /** データの予測時刻、UNIX、UTC */
+  dt: number;
+  /** 気象の数値情報 */
+  main: Main;
+  /** 気象情報（配列の最初のものがプライマリ） */
+  weather: Weather[];
+  /** 雲情報 */
+  clouds: Clouds;
+  /** 風情報 */
+  wind: Wind;
+  /** 視野距離 m（最大10km） */
+  visibility: number;
+  /** 降水確率（0～1） */
+  pop: number;
+  /** 降雨量情報 */
+  rain?: Pick<Rain, '3h'>;
+  /** 降雪量情報 */
+  snow?: Pick<Snow, '3h'>;
+  sys: {
+    /** 一日の一部 (n - 夜、d - 日) */
+    pod: 'n' | 'd';
+  };
+  /**
+   * データの予測時刻、ISO、UTC
+   * 例：2023-10-28 06:00:00
+   */
+  dt_txt: string;
+};
+
+export type ForecastWeatherResponse = {
+  /** API 応答で返されたタイムスタンプの数 */
+  cnt: number;
+  list: ForecastWeather[];
+  city: City;
+};
+
+const isForecastWeatherList = (args: unknown): args is ForecastWeather => {
+  const fwl = args as ForecastWeather;
+
+  // 最低限のチェック
+  return (
+    typeof fwl.dt === 'number' &&
+    typeof fwl.weather[0].id === 'number' &&
+    weatherType.includes(fwl.weather[0].main) &&
+    typeof fwl.main.temp_min === 'number' &&
+    typeof fwl.main.temp_max === 'number'
+  );
+};
+
+export const isForecastWeatherResponse = (
+  arg: unknown,
+): arg is ForecastWeatherResponse => {
+  const fw = arg as ForecastWeatherResponse;
+
+  // 最低限のチェック
+  return fw.list.every((li) => isForecastWeatherList(li));
 };
