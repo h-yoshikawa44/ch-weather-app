@@ -81,7 +81,7 @@ Other major libraries
 - [wicg-inert](https://github.com/WICG/inert)
 
 API
-- [MetaWeather API](https://www.metaweather.com/api/)
+- [OpenWeather API](https://openweathermap.org/)
 
 ## Features
 
