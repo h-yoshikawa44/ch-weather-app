@@ -2,32 +2,28 @@ import { FC } from 'react';
 import { css } from '@emotion/react';
 import { Navigation } from '@emotion-icons/material-rounded/Navigation';
 import Card from '@/components/common/Card';
-import { WindDirectionCompass } from '@/models/Weather';
-import { windAngles } from '@/constants/weather';
 import { colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
+import { convertDegToDirection, convertMpsToMph } from '@/utils/weather';
 
 type Props = {
   speed?: number;
-  compass?: WindDirectionCompass;
+  deg?: number;
 };
 
-const WeatherWindStatus: FC<Props> = ({ speed, compass }) => {
+const WeatherWindStatus: FC<Props> = ({ speed, deg }) => {
   return (
     <Card>
       <div css={weatherWindStatusLayout}>
         <h4 css={weatherWindStatusTitle}>Wind status</h4>
         <p css={weatherWindStatusSpeed}>
-          <em>{speed ? Math.round(speed) : '-'}</em>mph
+          <em>{speed ? Math.round(convertMpsToMph(speed)) : '-'}</em>mph
         </p>
         <p css={weatherWindStatusCompassBlock}>
           <span css={compassBlockIconBg}>
-            <Navigation
-              css={compass ? compassBlockIcon(compass) : 'N'}
-              size={14}
-            />
+            <Navigation css={compassBlockIcon(deg ?? 0)} size={14} />
           </span>
-          <i css={compassBlockValue}>{compass}</i>
+          <i css={compassBlockValue}>{convertDegToDirection(deg ?? 0)}</i>
         </p>
       </div>
     </Card>
@@ -79,10 +75,10 @@ const compassBlockIconBg = css`
   border-radius: 50%;
 `;
 
-const compassBlockIcon = (compass: WindDirectionCompass) => {
+const compassBlockIcon = (windDeg: number) => {
   return css`
     color: ${colors.gray6};
-    transform: rotate(${windAngles[compass]}deg);
+    transform: rotate(${windDeg}deg);
   `;
 };
 

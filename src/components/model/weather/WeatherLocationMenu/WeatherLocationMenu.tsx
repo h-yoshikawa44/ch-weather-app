@@ -66,7 +66,7 @@ const WeatherLocationMenu: FC<Props> = ({
         )}
         <ul css={weatherLocationMenuLocationList}>
           {locations?.map((location) => (
-            <li key={`${location.woeid}`}>
+            <li key={`${location.lat} - ${location.lon}`}>
               <button
                 css={locationListItemButton}
                 onClick={() => {
@@ -74,7 +74,10 @@ const WeatherLocationMenu: FC<Props> = ({
                   handleLocationMenuClose();
                 }}
               >
-                <span css={locationListItemButtonText}>{location.title}</span>
+                {/* OpenWeather API だと同都市名が複数返ることがあるので、苦肉の策で緯度経度も表示する */}
+                <span
+                  css={locationListItemButtonText}
+                >{`${location.country} - ${location.name} (${location.lat}. ${location.lon})`}</span>
                 <NavigateNext size={24} />
               </button>
             </li>
@@ -85,7 +88,7 @@ const WeatherLocationMenu: FC<Props> = ({
   );
 
   // クライアント側の処理になるので、Next.js でのサーバ側ではポータルを使わないようにする
-  if (!process.browser) {
+  if (typeof window === 'undefined') {
     return dom;
   }
   return createPortal(dom, document.body);

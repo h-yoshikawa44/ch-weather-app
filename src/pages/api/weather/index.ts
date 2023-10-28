@@ -1,18 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { HTTPError } from 'ky-universal';
 import {
-  getLocationsToOuter,
-  LocationsQuery,
-  isLocationsQuery,
-  createLocationsViewModel,
-} from '@/server/location';
+  getCurrentWeatherToOuter,
+  CurrentWeatherQuery,
+  isCurrentWeatherQuery,
+  createCurrentWeatherViewModel,
+} from '@/server/weather';
 
 /**
- * ロケーション検索 API
+ * 現在の天気情報取得 API
  *
- * クエリパラメータ（q は必須）
- * - q: string - 都市名、州コード (米国のみ)、および国コードをカンマで区切ったもの。 ISO 3166 国コード
- * - limit: number - 取得する都市の数（最大5つ）
+ * クエリパラメータ（lat と lon は必須）
+ * - lat: number - 緯度
+ * - lon: number - 経度
+ * - units: "standard" | "metric" | "imperial" - 測定単位
  * @param {NextApiRequest} req リクエストミドルウェア
  * @param {NextApiResponse} res レスポンスヘルパー
  */
@@ -24,15 +25,15 @@ export default async function handler(
     case 'GET':
       // 不正なクエリパラメータの時は403を返す
       const queryParams = req.query as unknown;
-      if (!isLocationsQuery(queryParams)) {
+      if (!isCurrentWeatherQuery(queryParams)) {
         res.status(403).send('Invalid query parameter.');
       }
 
-      await getLocationsToOuter({
-        searchParams: queryParams as LocationsQuery,
+      await getCurrentWeatherToOuter({
+        searchParams: queryParams as CurrentWeatherQuery,
       })
         .then((data) => {
-          res.status(200).json(createLocationsViewModel(data));
+          res.status(200).json(createCurrentWeatherViewModel(data));
         })
         .catch((err) => {
           if (err instanceof HTTPError) {

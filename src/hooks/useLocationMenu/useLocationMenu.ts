@@ -65,7 +65,7 @@ const useLocationMenu = () => {
       }
 
       setIsLoading(true);
-      getLocations('inner', { searchParams: { query } })
+      getLocations({ searchParams: { q: query, limit: 5 } })
         .then((data) => {
           setLocations(data);
           setErrorMessage('');

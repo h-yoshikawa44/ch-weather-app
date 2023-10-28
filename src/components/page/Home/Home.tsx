@@ -17,16 +17,16 @@ import useLocationMenu from '@/hooks/useLocationMenu';
 const Home: FC = () => {
   const {
     isLoading: isLoadingSetting,
-    errorMessage: errorMessageSetting,
-    currentLocation,
+    currentGeoLocation,
     temperatureMode,
     handleInitialCurrentLocation,
     handleSelectLocation,
     handleSwitchTemperatureMode,
   } = useWeatherSetting();
 
-  const { isLoading, errorMessage, weather } = useWeather(
-    currentLocation?.woeId,
+  const { isLoading, errorMessage, weather, forecastWeather } = useWeather(
+    currentGeoLocation?.lat,
+    currentGeoLocation?.lon,
   );
 
   const {
@@ -52,20 +52,17 @@ const Home: FC = () => {
     );
   }
 
-  if (errorMessageSetting || errorMessage) {
+  if (errorMessage) {
     return (
       <main css={darkBgColor}>
         <p css={guideMessageBlock}>
-          <small css={guideMessageText}>
-            {errorMessageSetting ? errorMessageSetting : errorMessage}
-          </small>
+          <small css={guideMessageText}>{errorMessage}</small>
         </p>
       </main>
     );
   }
 
-  const today = weather?.consolidated_weather[0];
-  const week = weather?.consolidated_weather.slice(1);
+  const today = new Date(Date.now()).toLocaleDateString();
 
   return (
     <Fragment>
@@ -79,10 +76,11 @@ const Home: FC = () => {
           }
         >
           <WeatherTop
-            today={today?.applicable_date}
-            weatherCode={today?.weather_state_abbr}
-            temperature={today?.the_temp}
-            location={weather?.title}
+            today={today}
+            weatherIconSrc={weather?.weatherIcon}
+            weatherName={weather?.weatherName}
+            temperature={weather?.temp}
+            location={weather?.city}
             mode={temperatureMode}
             handleLocationMenuOpen={handleLocationMenuOpen}
             handleInitialCurrentLocation={handleInitialCurrentLocation}
@@ -121,14 +119,15 @@ const Home: FC = () => {
               </header>
               <section css={rightAreaWeekSection}>
                 <div css={rightAreaWeekSectionLayout}>
-                  {week?.map((day, index) => (
+                  {forecastWeather?.map((day, index) => (
                     <WeatherDay
-                      key={day.applicable_date}
-                      date={day.applicable_date}
+                      key={day.date}
+                      date={day.date}
                       isTomorrow={index === 0}
-                      weatherCode={day.weather_state_abbr}
-                      minTemp={day.min_temp}
-                      maxTemp={day.max_temp}
+                      weatherIconSrc={day.weatherIcon}
+                      weatherName={day.weatherName}
+                      minTemp={day.minTemp}
+                      maxTemp={day.maxTemp}
                       mode={temperatureMode}
                     />
                   ))}
@@ -141,17 +140,17 @@ const Home: FC = () => {
                 <div css={highlightSectionCardBlock}>
                   <div css={highlightSectionCardBlockLayout}>
                     <WeatherWindStatus
-                      speed={today?.wind_speed}
-                      compass={today?.wind_direction_compass}
+                      speed={weather?.windSpeed}
+                      deg={weather?.windDeg}
                     />
-                    <WeatherHumidity humidity={today?.humidity} />
+                    <WeatherHumidity humidity={weather?.humidity} />
                     <WeatherHighlightCommon
                       type="visibility"
-                      value={today?.visibility}
+                      value={weather?.visibility}
                     />
                     <WeatherHighlightCommon
                       type="airPressure"
-                      value={today?.air_pressure}
+                      value={weather?.airPressure}
                     />
                   </div>
                 </div>

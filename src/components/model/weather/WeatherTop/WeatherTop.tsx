@@ -5,12 +5,8 @@ import { MyLocation } from '@emotion-icons/material-rounded/MyLocation';
 import { Place } from '@emotion-icons/material-rounded/Place';
 import Button from '@/components/common/Button';
 import CircleButton from '@/components/common/CircleButton';
-import { WeatherCode, TemperatureType } from '@/models/Weather';
-import {
-  weatherIcons,
-  weatherNames,
-  temperatureUnits,
-} from '@/constants/weather';
+import { TemperatureType } from '@/models/Weather';
+import { temperatureUnits } from '@/constants/weather';
 import { breakPoint, colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
 import { dateFormat } from '@/utils/date';
@@ -18,7 +14,8 @@ import { convertCelsiusToFahrenheit } from '@/utils/weather';
 
 type Props = {
   today?: string;
-  weatherCode?: WeatherCode;
+  weatherIconSrc?: string;
+  weatherName?: string;
   temperature?: number;
   location?: string;
   mode: TemperatureType;
@@ -28,7 +25,8 @@ type Props = {
 
 const WeatherTop: FC<Props> = ({
   today,
-  weatherCode,
+  weatherIconSrc,
+  weatherName,
   temperature,
   location,
   mode,
@@ -59,11 +57,11 @@ const WeatherTop: FC<Props> = ({
       <div css={[watherTopContents, watherTopContentLayout]}>
         <div css={contentsBgImgBlock}>
           <p css={contentsImgBlock}>
-            {weatherCode && (
+            {weatherIconSrc && weatherName && (
               <Image
                 css={contentsImg}
-                src={weatherIcons[weatherCode]}
-                alt={weatherNames[weatherCode]}
+                src={weatherIconSrc}
+                alt={weatherName}
                 fill
               />
             )}
@@ -73,9 +71,7 @@ const WeatherTop: FC<Props> = ({
           <em>{roundTemp}</em>
           {temperatureUnits[mode]}
         </p>
-        <p css={contentsWeather}>
-          {weatherCode ? weatherNames[weatherCode] : '-'}
-        </p>
+        <p css={contentsWeather}>{weatherName ? weatherName : '-'}</p>
         <div css={contentsSubTextBlock}>
           <small css={contentsDate}>
             Today -{' '}

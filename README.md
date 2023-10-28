@@ -81,7 +81,7 @@ Other major libraries
 - [wicg-inert](https://github.com/WICG/inert)
 
 API
-- [MetaWeather API](https://www.metaweather.com/api/)
+- [OpenWeather API](https://openweathermap.org/)
 
 ## Features
 
@@ -113,6 +113,9 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 git clone https://github.com/h-yoshikawa44/ch-weather-app.git
 or
 git clone git@github.com:h-yoshikawa44/ch-weather-app.git
+
+# Setting Env(Set each value according to your environment.)
+cp .env.example .env
 
 # Install dependencies
 npm install
