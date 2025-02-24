@@ -4,7 +4,7 @@ on: push
 jobs:
   front-end-check:
     name: Front End Check
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
 
     steps:
@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
           cache: npm
@@ -23,8 +23,6 @@ jobs:
 
       - name: ESlint & StyleLint & Prettier
         run: npm run lint-check
-
-       run: npm run lint-check
 
       - name: Slack Notification by NonSuccess
         uses: 8398a7/action-slack@v3
