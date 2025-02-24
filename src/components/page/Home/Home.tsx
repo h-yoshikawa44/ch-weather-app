@@ -67,14 +67,7 @@ const Home: FC = () => {
   return (
     <Fragment>
       <div css={mainLayout}>
-        <div
-          ref={(node) =>
-            node &&
-            (open
-              ? node.setAttribute('inert', '')
-              : node.removeAttribute('inert'))
-          }
-        >
+        <div inert={open}>
           <WeatherTop
             today={today}
             weatherIconSrc={weather?.weatherIcon}
@@ -86,15 +79,7 @@ const Home: FC = () => {
             handleInitialCurrentLocation={handleInitialCurrentLocation}
           />
         </div>
-        <div
-          css={[darkBgColor, rightAreaLayout]}
-          ref={(node) =>
-            node &&
-            (inertFlg
-              ? node.setAttribute('inert', '')
-              : node.removeAttribute('inert'))
-          }
-        >
+        <div css={[darkBgColor, rightAreaLayout]} inert={inertFlg}>
           <main>
             <div css={rightAreaContainer}>
               <header css={rightAreaHeader}>

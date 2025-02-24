@@ -3,7 +3,7 @@
 <h1 align="center">Weather app</h1>
 
 <div align="center">
-   Solution for a challenge from  <a href="http://legacy.devchallenges.io" target="_blank">Devchallenges.io</a>.
+   Solution for a challenge from Devchallenges.io.
 </div>
 
 <div align="center">
@@ -11,16 +11,11 @@
     <a href="https://ch-weather-app.vercel.app/">
       Demo
     </a>
-    <span> | </span>
-    <a href="https://legacy.devchallenges.io/solutions/1juVePEnnmpjMCzrbvRr">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://legacy.devchallenges.io/challenges/mM1UIenRhK808W8qmLWv">
-      Challenge
-    </a>
   </h3>
 </div>
+
+*The site is now closed, but this assignment was originally posted at `https://legacy.devchallenges.io/solutions/1juVePEnnmpjMCzrbvRr`.  
+（My assignment submission page at the time: `https://legacy.devchallenges.io/challenges/mM1UIenRhK808W8qmLWv`.）
 
 <!-- TABLE OF CONTENTS -->
 
@@ -67,17 +62,17 @@ The menu that opens from "Search for places" allows you to search for a location
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 Base
-- [Node.js](https://nodejs.org/)：20.8.0
-- [TypeScript](https://www.typescriptlang.org/)：5.2.2
-- [React](https://reactjs.org/)：18.2.0
-- [Next.js](https://nextjs.org/)：13.5.6
+- [Node.js](https://nodejs.org/)：22.13.1
+- [TypeScript](https://www.typescriptlang.org/)：5.7.3
+- [React](https://reactjs.org/)：19.0.0
+- [Next.js](https://nextjs.org/)：15.1.7
 
 Other major libraries
+- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
 - [ky-universal](https://github.com/sindresorhus/ky-universal)
 - [polished](https://polished.js.org/)
-- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [wicg-inert](https://github.com/WICG/inert)
 
 API
@@ -87,7 +82,7 @@ API
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://legacy.devchallenges.io/challenges) challenge. The [challenge](https://legacy.devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
+This application/site was created as a submission to a DevChallenges challenge. The challenge was to build an application to complete the given user stories.
 
 - [x] User story: I can see city weather as default, preferably my current location
 - [x] User story: I can search for city
@@ -142,6 +137,6 @@ npm run start
 
 ## Contact
 
-- Website：[h-yoshikawa44.com](https://h-yoshikawa44.com)
-- GitHub：[@h-yoshikawa44](https://github.com/h-yoshikawa44)
-- Twitter：[@yoshi44_lion](https://twitter.com/yoshi44_lion)
+- Website: [h-yoshikawa44.com](https://h-yoshikawa44.com)
+- GitHub: [@h-yoshikawa44](https://github.com/h-yoshikawa44)
+- X: [@yoshi44_lion](https://x.com/yoshi44_lion)

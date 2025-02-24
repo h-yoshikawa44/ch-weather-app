@@ -1,9 +1,9 @@
 import {
   LocationsQuery,
   isLocationsQuery,
-  getLocationsToOuter,
-} from './getLocationsToOuter';
+  getLocationsFromExternal,
+} from './getLocationsFromExternal';
 import { createLocationsViewModel } from './createLocationsViewModel';
 
 export type { LocationsQuery };
-export { isLocationsQuery, getLocationsToOuter, createLocationsViewModel };
+export { isLocationsQuery, getLocationsFromExternal, createLocationsViewModel };

@@ -1,5 +1,6 @@
 export type TemperatureType = 'celsius' | 'fahrenheit';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const direction = [
   'N',
   'NNE',

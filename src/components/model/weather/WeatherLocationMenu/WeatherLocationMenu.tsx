@@ -98,16 +98,16 @@ const weatherLocationMenu = css`
   position: fixed;
   inset: 0 70% 0 0;
   z-index: ${zIndex.menu};
+  visibility: hidden;
   padding: 12px 0;
   overflow-y: scroll;
-  visibility: hidden;
   background-color: ${colors.blackLighten};
   opacity: 0;
+  transform: translateX(-100%);
   transition:
     opacity 0.3s,
     visibility 0.3s ease 0.3s,
     transform 0.3s;
-  transform: translateX(-100%);
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -131,8 +131,8 @@ const weatherLocationMenu = css`
 const weatherLocationMenuOpen = css`
   visibility: visible;
   opacity: 1;
-  transition-delay: 0s;
   transform: translateX(0);
+  transition-delay: 0s;
 `;
 
 const weatherLocationMenuConteiner = css`

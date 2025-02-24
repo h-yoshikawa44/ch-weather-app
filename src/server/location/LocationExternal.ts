@@ -1,4 +1,4 @@
-export type LocationResponse = {
+export type LocationExternal = {
   /** 都市名 */
   name: string;
   /**
@@ -24,10 +24,10 @@ export type LocationResponse = {
  * Geocoding API（外部 API） のレスポンスモデル
  * ref: https://openweathermap.org/api/geocoding-api
  */
-export type LocationsResponse = LocationResponse[];
+export type LocationsExternal = LocationExternal[];
 
-export const isLocationResponse = (arg: unknown): arg is LocationResponse => {
-  const l = arg as LocationResponse;
+export const isLocationExternal = (arg: unknown): arg is LocationExternal => {
+  const l = arg as LocationExternal;
 
   return (
     typeof l.name === 'string' &&
@@ -42,10 +42,10 @@ export const isLocationResponse = (arg: unknown): arg is LocationResponse => {
   );
 };
 
-export const isLocationsResponse = (
+export const isLocationsExternal = (
   args: unknown,
-): args is LocationsResponse => {
-  const ls = args as LocationsResponse;
+): args is LocationsExternal => {
+  const ls = args as LocationsExternal;
 
-  return ls.every((l) => isLocationResponse(l));
+  return ls.every((l) => isLocationExternal(l));
 };

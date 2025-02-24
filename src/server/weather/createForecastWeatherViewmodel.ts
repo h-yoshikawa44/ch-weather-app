@@ -1,5 +1,5 @@
 import { weatherIconsMap } from '@/constants/weather';
-import { ForecastWeatherResponse } from './Weather';
+import { ForecastWeatherDataExternal } from './WeatherExternal';
 import { DayWeather, ForecastWeather } from '@/models/Weather';
 
 type DayWeatherWithDate = Omit<DayWeather, 'date'> & {
@@ -7,7 +7,7 @@ type DayWeatherWithDate = Omit<DayWeather, 'date'> & {
 };
 
 export const creatForecastWeatherViewModel = (
-  forecastWeather: ForecastWeatherResponse,
+  forecastWeather: ForecastWeatherDataExternal,
 ): ForecastWeather => {
   const today = new Date(Date.now());
   const dayList: number[] = [];
