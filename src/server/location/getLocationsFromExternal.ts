@@ -1,6 +1,6 @@
 import { Options } from 'ky-universal';
 import { getExtendKy } from '@/config/ky';
-import { isLocationsResponse } from './Location';
+import { isLocationsExternal } from './LocationExternal';
 
 export type LocationsQuery = {
   /**
@@ -27,13 +27,13 @@ export const isLocationsQuery = (query: unknown): query is LocationsQuery => {
   );
 };
 
-export const getLocationsToOuter = async (
+export const getLocationsFromExternal = async (
   options: Options & { searchParams: LocationsQuery },
 ) => {
   const response = await getExtendKy('outer', options).get('geo/1.0/direct');
   const locations = (await response.json()) as unknown[];
 
-  if (!isLocationsResponse(locations)) {
+  if (!isLocationsExternal(locations)) {
     throw Error('API type error');
   }
 

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { HTTPError } from 'ky-universal';
 import {
-  getLocationsToOuter,
+  getLocationsFromExternal,
   LocationsQuery,
   isLocationsQuery,
   createLocationsViewModel,
@@ -28,7 +28,7 @@ export default async function handler(
         res.status(403).send('Invalid query parameter.');
       }
 
-      await getLocationsToOuter({
+      await getLocationsFromExternal({
         searchParams: queryParams as LocationsQuery,
       })
         .then((data) => {

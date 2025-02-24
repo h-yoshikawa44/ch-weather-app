@@ -1,6 +1,6 @@
 import { Options } from 'ky-universal';
 import { getExtendKy } from '@/config/ky';
-import { isCurrentWeatherResponse } from './Weather';
+import { isCurrentWeatherExternal } from './WeatherExternal';
 
 const units = ['standard', 'metric', 'imperial'] as const;
 
@@ -25,13 +25,13 @@ export const isCurrentWeatherQuery = (
   );
 };
 
-export const getCurrentWeatherToOuter = async (
+export const getCurrentWeatherFromExternal = async (
   options: Options & { searchParams: CurrentWeatherQuery },
 ) => {
   const response = await getExtendKy('outer', options).get('data/2.5/weather');
   const locations = (await response.json()) as unknown[];
 
-  if (!isCurrentWeatherResponse(locations)) {
+  if (!isCurrentWeatherExternal(locations)) {
     throw Error('API type error');
   }
 

@@ -1,22 +1,22 @@
 import {
   CurrentWeatherQuery,
   isCurrentWeatherQuery,
-  getCurrentWeatherToOuter,
-} from './getCurrentWeatherToOuter';
+  getCurrentWeatherFromExternal,
+} from './getCurrentWeatherFromExternal';
 import {
   ForecastWeatherQuery,
   isForecastWeatherQuery,
-  getForecastWeatherToOuter,
-} from './getForecastWeatherToOuter';
+  getForecastWeatherFromExternal,
+} from './getForecastWeatherFromExternal';
 import { createCurrentWeatherViewModel } from './createCurrentWeatherViewModel';
 import { creatForecastWeatherViewModel } from './createForecastWeatherViewmodel';
 
 export type { CurrentWeatherQuery, ForecastWeatherQuery };
 export {
   isCurrentWeatherQuery,
-  getCurrentWeatherToOuter,
+  getCurrentWeatherFromExternal,
   createCurrentWeatherViewModel,
   isForecastWeatherQuery,
-  getForecastWeatherToOuter,
+  getForecastWeatherFromExternal,
   creatForecastWeatherViewModel,
 };

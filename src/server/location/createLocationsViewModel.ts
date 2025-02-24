@@ -1,8 +1,8 @@
 import { Locations } from '@/models/Location';
-import { LocationsResponse } from './Location';
+import { LocationsExternal } from './LocationExternal';
 
 export const createLocationsViewModel = (
-  locations: LocationsResponse,
+  locations: LocationsExternal,
 ): Locations => {
   return locations.map((location) => {
     return {

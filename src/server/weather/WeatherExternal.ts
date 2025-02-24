@@ -190,7 +190,7 @@ type Snow = {
  * Current weather data API（外部 API） のレスポンスモデル
  * ref: https://openweathermap.org/current
  */
-export type CurrentWeatherResponse = {
+export type CurrentWeatherExternal = {
   /** 地理情報 */
   coord: Coord;
   /** 気象情報（配列の最初のものがプライマリ） */
@@ -226,10 +226,10 @@ export type CurrentWeatherResponse = {
   name: string;
 };
 
-export const isCurrentWeatherResponse = (
+export const isCurrentWeatherExternal = (
   arg: unknown,
-): arg is CurrentWeatherResponse => {
-  const w = arg as CurrentWeatherResponse;
+): arg is CurrentWeatherExternal => {
+  const w = arg as CurrentWeatherExternal;
 
   // 最低限のチェック
   return (
@@ -293,14 +293,14 @@ type ForecastWeather = {
   dt_txt: string;
 };
 
-export type ForecastWeatherResponse = {
+export type ForecastWeatherDataExternal = {
   /** API 応答で返されたタイムスタンプの数 */
   cnt: number;
   list: ForecastWeather[];
   city: City;
 };
 
-const isForecastWeatherList = (args: unknown): args is ForecastWeather => {
+const isForecastWeatherExternal = (args: unknown): args is ForecastWeather => {
   const fwl = args as ForecastWeather;
 
   // 最低限のチェック
@@ -313,11 +313,11 @@ const isForecastWeatherList = (args: unknown): args is ForecastWeather => {
   );
 };
 
-export const isForecastWeatherResponse = (
+export const isForecastWeatherListExternal = (
   arg: unknown,
-): arg is ForecastWeatherResponse => {
-  const fw = arg as ForecastWeatherResponse;
+): arg is ForecastWeatherDataExternal => {
+  const fw = arg as ForecastWeatherDataExternal;
 
   // 最低限のチェック
-  return fw.list.every((li) => isForecastWeatherList(li));
+  return fw.list.every((li) => isForecastWeatherExternal(li));
 };

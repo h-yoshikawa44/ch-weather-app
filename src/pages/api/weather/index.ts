@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { HTTPError } from 'ky-universal';
 import {
-  getCurrentWeatherToOuter,
+  getCurrentWeatherFromExternal,
   CurrentWeatherQuery,
   isCurrentWeatherQuery,
   createCurrentWeatherViewModel,
@@ -29,7 +29,7 @@ export default async function handler(
         res.status(403).send('Invalid query parameter.');
       }
 
-      await getCurrentWeatherToOuter({
+      await getCurrentWeatherFromExternal({
         searchParams: queryParams as CurrentWeatherQuery,
       })
         .then((data) => {

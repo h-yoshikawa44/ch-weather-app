@@ -1,9 +1,9 @@
 import { weatherIconsMap } from '@/constants/weather';
-import { CurrentWeatherResponse } from './Weather';
+import { CurrentWeatherExternal } from './WeatherExternal';
 import { CurrentWeather } from '@/models/Weather';
 
 export const createCurrentWeatherViewModel = (
-  currentWeather: CurrentWeatherResponse,
+  currentWeather: CurrentWeatherExternal,
 ): CurrentWeather => {
   return {
     city: `${currentWeather.sys.country} - ${currentWeather.name}`,
