@@ -9,12 +9,12 @@
     "lint-check": "npm run lint:eslint && npm run lint:stylelint && npm run check:prettier",
     "lint:eslint": "next lint",
     "lint:stylelint": "stylelint \"./src/**/*.{js,jsx,ts,tsx}\"",
-    "check:prettier": "prettier --check \"./{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}\"",
+    "check:prettier": "prettier --check \"./{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json,yml}\"",
     "fix": "npm run fix:eslint && npm run fix:stylelint && npm run fix:prettier",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:stylelint": "npm run lint:stylelint -- --fix",
     "fix:prettier": "npm run check:prettier -- --write",
-    "prepare": "simple-git-hooks || echo 'Can not set git hooks'"
+    "prepare": "lefthook install || echo 'Can not set git hooks'"
   },
   "dependencies": {
     "@emotion-icons/material-rounded": "^3.14.0",
@@ -39,10 +39,9 @@
     "eslint": "^9.21.0",
     "eslint-config-next": "^15.1.7",
     "eslint-config-prettier": "^10.0.1",
-    "lint-staged": "^15.0.2",
+    "lefthook": "^1.11.0",
     "postcss-styled-syntax": "^0.7.1",
     "prettier": "^3.5.2",
-    "simple-git-hooks": "^2.9.0",
     "stylelint": "^16.14.1",
     "stylelint-config-recess-order": "^6.0.0",
     "stylelint-config-standard": "^37.0.0",
@@ -51,19 +50,5 @@
   },
   "volta": {
     "node": "22.13.1"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "prepare-commit-msg": "./.githooks/prepare-commit-msg \"$@\""
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "prettier --write --loglevel=error",
-      "eslint --fix --quiet",
-      "stylelint --fix --quiet"
-    ],
-    "./**/*.{html,gql,graphql,json}": [
-      "prettier --write --loglevel=error"
-    ]
   }
 }

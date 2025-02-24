@@ -1,0 +1,28 @@
+pre-commit:
+  parallel: true
+  commands:
+    js-ts-fixer:
+      glob: 'src/**/*.{js,jsx,ts,tsx}'
+      run: |
+        npx prettier --write --log-level=error "{staged_files}"
+        npx eslint --fix --quiet "{staged_files}"
+        npx stylelint --fix --quiet "{staged_files}"
+      # デフォルトではコマンド実行後の差分を stage に上げてくれないので上げるようにする
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase
+    formatter:
+      glob: '*.{html,gql,graphql,json,yml}'
+      run: npx prettier --write --log-level=error "{staged_files}"
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase
+
+prepare-commit-msg:
+  scripts:
+    'extraction-issue-number':
+      # 応答する処理があっても動作するようにする
+      interactive: true
+      runner: sh
