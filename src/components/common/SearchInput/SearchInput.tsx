@@ -48,9 +48,9 @@ const searchInputBase = css`
   font-weight: 500;
   line-height: 19px;
   color: ${colors.gray6};
+  outline: none;
   background-color: transparent;
   border: none;
-  outline: none;
 
   &::placeholder {
     color: ${colors.placeHolder};
