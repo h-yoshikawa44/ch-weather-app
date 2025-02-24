@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
-import 'modern-css-reset/dist/reset.min.css';
-
+import { resetStyle } from '@/styles/reset';
 export const globalStyle = css`
+  ${resetStyle}
+
   html,
   body {
     padding: 0;
