@@ -67,7 +67,7 @@ The menu that opens from "Search for places" allows you to search for a location
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 Base
-- [Node.js](https://nodejs.org/)：20.8.0
+- [Node.js](https://nodejs.org/)：22.13.1
 - [TypeScript](https://www.typescriptlang.org/)：5.2.2
 - [React](https://reactjs.org/)：18.2.0
 - [Next.js](https://nextjs.org/)：13.5.6
