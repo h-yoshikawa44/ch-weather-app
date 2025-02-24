@@ -5,6 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "typecheck": "tsc",
     "lint-check": "npm run lint:eslint && npm run lint:stylelint && npm run check:prettier",
     "lint:eslint": "next lint",
     "lint:stylelint": "stylelint \"./src/**/*.{js,jsx,ts,tsx}\"",
