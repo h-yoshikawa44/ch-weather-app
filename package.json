@@ -42,10 +42,10 @@
     "lefthook": "^1.11.0",
     "postcss-styled-syntax": "^0.7.1",
     "prettier": "^3.5.2",
-    "stylelint": "^16.14.1",
-    "stylelint-config-recess-order": "^6.0.0",
-    "stylelint-config-standard": "^37.0.0",
-    "stylelint-order": "^6.0.4",
+    "stylelint": "^17.4.0",
+    "stylelint-config-recess-order": "^7.6.1",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^7.0.1",
     "typescript": "^5.9.3"
   }
 }

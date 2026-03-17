@@ -53,8 +53,8 @@ export const resetStyle = css`
 
   /* A elements that don't have a class get default styles */
   a:not([class]) {
-    text-decoration-skip-ink: auto;
     color: currentcolor;
+    text-decoration-skip-ink: auto;
   }
 
   /* Make images easier to work with */
