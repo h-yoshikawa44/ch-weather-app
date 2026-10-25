@@ -4,6 +4,11 @@
 GNU_SED=true
 sed --version 1>/dev/null 2>/dev/null || GNU_SED=false
 
+# rebase の場合は何もしない
+if git rev-parse --is-inside-repository &>/dev/null && [ -d ".git/rebase-merge" ]; then
+  exit 0
+fi
+
 # コミットメッセージ入力前に、ブランチ名から Issue 番号を抽出して置換する
 COMMIT_MSG_FILE=$1
 MESSAGE=$(cat "$COMMIT_MSG_FILE")
