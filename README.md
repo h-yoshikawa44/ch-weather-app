@@ -72,7 +72,7 @@ Other major libraries
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
 - [ky](https://github.com/sindresorhus/ky)
-- [polished](https://polished.js.org/)
+- [@ctrl/tinycolor](https://tinycolor.vercel.app/)
 - [wicg-inert](https://github.com/WICG/inert)
 
 API
