@@ -1,4 +1,4 @@
-import { Options } from 'ky-universal';
+import { Options } from 'ky';
 import { getExtendKy } from '@/config/ky';
 import { isForecastWeather } from '@/models/Weather';
 

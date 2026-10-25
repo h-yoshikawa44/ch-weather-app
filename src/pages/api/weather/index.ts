@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { HTTPError } from 'ky-universal';
+import { HTTPError } from 'ky';
 import {
   getCurrentWeatherFromExternal,
   CurrentWeatherQuery,

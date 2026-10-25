@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { HTTPError } from 'ky-universal';
+import { HTTPError } from 'ky';
 import { CurrentWeather, ForecastWeather } from '@/models/Weather';
 import { getCurrentWeather } from '@/domains/getCurrentWeather';
 import { getForecastWeather } from '@/domains/getForecastWeather';

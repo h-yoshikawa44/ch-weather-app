@@ -1,6 +1,5 @@
 import nextPlugin from '@next/eslint-plugin-next';
 import tseslint from 'typescript-eslint';
-import eslintConfigPrettier from 'eslint-config-prettier';
 
 const eslintConfig = [
   {
@@ -13,7 +12,6 @@ const eslintConfig = [
     },
   },
   ...tseslint.configs.recommended,
-  eslintConfigPrettier,
   {
     ignores: ['.next/*', 'out/*', 'public/*', 'node_modules/*'],
     rules: {

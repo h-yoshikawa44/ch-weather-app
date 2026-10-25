@@ -63,6 +63,7 @@ const WeatherTop: FC<Props> = ({
                 src={weatherIconSrc}
                 alt={weatherName}
                 fill
+                sizes="330px"
               />
             )}
           </p>

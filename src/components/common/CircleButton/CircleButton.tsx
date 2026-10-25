@@ -1,6 +1,6 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { darken } from 'polished';
+import { TinyColor } from '@ctrl/tinycolor';
 import { colorRatios, colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
 
@@ -41,7 +41,9 @@ const circleButtonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        background-color: ${darken(colorRatios.buttonDarken, colors.gray6)};
+        background-color: ${new TinyColor(colors.gray6)
+          .darken(colorRatios.buttonDarken)
+          .toHexString()};
       }
 
       &:focus:not(:focus-visible) {
@@ -55,7 +57,9 @@ const circleButtonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        background-color: ${darken(colorRatios.buttonDarken, colors.gray1)};
+        background-color: ${new TinyColor(colors.gray1)
+          .darken(colorRatios.buttonDarken)
+          .toHexString()};
       }
 
       &:focus:not(:focus-visible) {

@@ -1,6 +1,6 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { darken } from 'polished';
+import { TinyColor } from '@ctrl/tinycolor';
 import { colorRatios, colors } from '@/styles/constants';
 import { raleway } from '@/styles/fonts';
 
@@ -50,7 +50,9 @@ const buttonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        background-color: ${darken(colorRatios.buttonDarken, colors.gray3)};
+        background-color: ${new TinyColor(colors.gray3)
+          .darken(colorRatios.buttonDarken)
+          .toHexString()};
       }
     `;
   } else if (color === 'blue') {
@@ -60,7 +62,9 @@ const buttonColor = (color: Color) => {
 
       &:hover,
       &:focus {
-        background-color: ${darken(colorRatios.buttonDarken, colors.blue)};
+        background-color: ${new TinyColor(colors.blue)
+          .darken(colorRatios.buttonDarken)
+          .toHexString()};
       }
     `;
   }

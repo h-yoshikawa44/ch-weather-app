@@ -49,6 +49,7 @@ const WeatherDayCard: FC<Props> = ({
           src={weatherIconSrc}
           alt={weatherName}
           fill
+          sizes="110px"
         />
       </p>
       <p css={weatherDayTempBlock}>
