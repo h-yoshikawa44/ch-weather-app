@@ -37,7 +37,7 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.2",
-    "lefthook": "^2.1.3",
+    "lefthook": "^2.2.2",
     "postcss-styled-syntax": "^0.7.4",
     "prettier": "^3.9.10",
     "stylelint": "^17.16.0",
