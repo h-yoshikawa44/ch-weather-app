@@ -71,7 +71,7 @@ Other major libraries
 - [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
-- [ky-universal](https://github.com/sindresorhus/ky-universal)
+- [ky](https://github.com/sindresorhus/ky)
 - [polished](https://polished.js.org/)
 - [wicg-inert](https://github.com/WICG/inert)
 

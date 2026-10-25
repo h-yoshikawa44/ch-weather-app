@@ -5,7 +5,7 @@ import {
   useEffect,
   useCallback,
 } from 'react';
-import { HTTPError } from 'ky-universal';
+import { HTTPError } from 'ky';
 import { Locations } from '@/models/Location';
 import { breakPoint } from '@/styles/constants';
 import getLocations from '@/domains/getLocations';

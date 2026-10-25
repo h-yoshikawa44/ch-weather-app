@@ -1,4 +1,4 @@
-import ky, { Options } from 'ky-universal';
+import ky, { Options } from 'ky';
 
 export type ApiType = 'inner' | 'outer';
 
@@ -16,7 +16,7 @@ const api = ky.create({
 
 export const getExtendKy = (apiType: ApiType, options?: Options) => {
   return api.extend({
-    prefixUrl: prefixUrls[apiType],
+    prefix: prefixUrls[apiType],
     ...options,
   });
 };
